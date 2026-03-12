@@ -1,0 +1,36 @@
+---
+title: "The Geometry of High Dimensions"
+date: "2026-03-11"
+summary: "How objects behave in High Dimensions"
+tags: ["High Dimensions", "Mathematics", "Data Science"]
+---
+# The Geometry of High Dimensions.
+
+Have you ever thought how a higher dimensional polygon looks like? I did. But couldn't understand how it would look.
+It was so un-comprehendable, that I was unable to say what it should even be like, but then I caught the Foundations of Data Science book by "Avrim Blum" in which he explained the geometry of high dimensions.
+
+Let us start simple.
+
+Let us take the example of a cube of side $s$. Obviously we get a 3-dimensional idea of how a cube is.
+If I ask how does that look once I project that to a 2-dimensions? Yes, it becomes a square of side $s$. Great, now tell me what is the projection of a cube in 1-dimension? It is a straight line of length of side $s$.
+
+Great, now that was a great recap, regarding what a cube is in all 3 dimensions. Now we shall analyze it.
+We could see that no matter what dimension it is, the side of cube is $s$ is all directions. That is what makes it a cube.
+
+Keeping this in mind, we shall move forward.
+
+### What happens to volume of the cube in $d$-dimensions, where the side is decreased by a factor of $\epsilon$
+
+That is a great question to think in the beginning to the Geometry of Higher dimensinons as this is one of the reason, we often hear the word *"curse of dimensionality"*.
+
+As per our definition, We know that a cube is an object of side $s$ in all dimensions. So, we shall do the least. Decrease the side by a factor of $\epsilon$ and compute the volume, which is $(s')^{d}$.
+
+$$
+V(d) = s^d
+$$
+
+If the side length shrinks by a factor of $\epsilon$:
+
+$$
+V'(d) = (1-\epsilon)^d \cdot s^d = (1-\epsilon)^d \cdot V(d)
+$$

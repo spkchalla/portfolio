@@ -1,0 +1,17 @@
+.track {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: transparent;
+    z-index: 100;
+}
+
+.bar {
+    height: 100%;
+    width: 0%;
+    background: var(--color-accent);
+    transition: width 80ms linear;
+    border-radius: 0 2px 2px 0;
+}

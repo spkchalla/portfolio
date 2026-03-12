@@ -1,0 +1,188 @@
+/* Home page styles */
+
+.hero {
+    padding-top: var(--space-9);
+    padding-bottom: var(--space-8);
+}
+
+.heroInner {
+    max-width: none;
+}
+
+.heroEyebrow {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--space-4);
+}
+
+.heroHeading {
+    font-size: clamp(var(--text-xl), 3.5vw, var(--text-3xl));
+    font-weight: var(--weight-bold);
+    line-height: var(--leading-heading);
+    letter-spacing: -0.025em;
+    color: var(--color-text);
+    margin-bottom: var(--space-5);
+}
+
+.heroSub {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: var(--leading-body);
+    margin-bottom: var(--space-6);
+    max-width: none;
+}
+
+.heroActions {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.btnPrimary {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    color: var(--color-bg);
+    background: var(--color-accent);
+    padding: 10px var(--space-5);
+    border-radius: var(--radius-sm);
+    transition: background var(--duration-fast) var(--ease-out),
+        transform var(--duration-fast) var(--ease-out);
+}
+
+.btnPrimary:hover {
+    background: var(--color-accent-dim);
+    transform: translateY(-1px);
+}
+
+.btnGhost {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 10px var(--space-5);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--duration-fast) var(--ease-out),
+        color var(--duration-fast) var(--ease-out),
+        transform var(--duration-fast) var(--ease-out);
+}
+
+.btnGhost:hover {
+    border-color: var(--color-text-muted);
+    color: var(--color-text);
+    transform: translateY(-1px);
+}
+
+.dividerWrap {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.section {
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-7);
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-5);
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+/* Article grid */
+.articleGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-5);
+    margin-bottom: var(--space-5);
+}
+
+.articleCard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    text-decoration: none;
+}
+
+.articleCardMeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.articleCardTitle {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text);
+    line-height: var(--leading-heading);
+    margin: 0;
+}
+
+.articleCardSummary {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    flex: 1;
+}
+
+.readMore {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-accent);
+    margin-top: auto;
+}
+
+/* Project grid */
+.projectGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-5);
+    margin-bottom: var(--space-5);
+}
+
+.projectCard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    text-decoration: none;
+}
+
+.projectName {
+    font-size: var(--text-base);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text);
+    margin: 0;
+}
+
+.projectDesc {
+    flex: 1;
+    line-height: 1.6;
+}
+
+.projectTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.viewAll {
+    display: inline-block;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-muted);
+    transition: color var(--duration-fast) var(--ease-out);
+}
+
+.viewAll:hover {
+    color: var(--color-accent);
+}
