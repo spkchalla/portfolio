@@ -85,28 +85,79 @@
 }
 
 /* --- Dark Theme Overrides (Default is Dark now) --- */
+/* --- Light Theme --- */
 [data-theme="light"] {
-  --color-bg: #fcfcfc;
-  --color-bg-subtle: #f5f5f5;
+  --color-bg: #f5f5f7;
+  --color-bg-subtle: #ffffff;
   --color-surface: #ffffff;
-  --color-border: #e5e5e5;
-  --color-text: #0a0a0a;
-  --color-text-muted: #52525b;
-  --color-text-faint: #71717a;
+  --color-border: #e2e2e7;
+  --color-text: #1d1d1f;
+  --color-text-muted: #6e6e73;
+  --color-text-faint: #86868b;
+  --color-accent: #0066cc;
+  --color-accent-light: rgba(0, 102, 204, 0.08);
+  --color-glow: rgba(0, 102, 204, 0.2);
+  --color-scanline: rgba(0, 0, 0, 0.03);
+  --scanline-opacity: 0.1;
+  --color-code-bg: #f2f2f7;
+  --color-code-text: #1d1d1f;
+}
 
-  --color-accent: #2563eb;
-  /* Deeper blue for contrast */
-  --color-accent-light: rgba(37, 99, 235, 0.08);
-  --color-glow: rgba(37, 99, 235, 0.15);
+/* --- Nature (Forest) Theme --- */
+[data-theme="nature"] {
+  --color-bg: #0d1a15;
+  --color-bg-subtle: #12241d;
+  --color-surface: #182e26;
+  --color-border: #224035;
+  --color-text: #e8f3ef;
+  --color-text-muted: #a0c2b5;
+  --color-text-faint: #5a8575;
+  --color-accent: #2e7d32;
+  /* Forest Green */
+  --color-accent-light: rgba(46, 125, 50, 0.15);
+  --color-glow: rgba(46, 125, 50, 0.4);
+  --color-scanline: rgba(0, 20, 10, 0.2);
+  --scanline-opacity: 0.2;
+  --color-code-bg: #08110e;
+  --color-code-text: #e8f3ef;
+}
 
-  --color-scanline: rgba(255, 255, 255, 0.1);
-  --scanline-opacity: 0.05;
+/* --- Midnight (Ocean) Theme --- */
+[data-theme="midnight"] {
+  --color-bg: #020617;
+  --color-bg-subtle: #0f172a;
+  --color-surface: #1e293b;
+  --color-border: #334155;
+  --color-text: #f8fafc;
+  --color-text-muted: #94a3b8;
+  --color-text-faint: #475569;
+  --color-accent: #38bdf8;
+  /* Cyber Blue */
+  --color-accent-light: rgba(56, 189, 248, 0.1);
+  --color-glow: rgba(56, 189, 248, 0.5);
+  --color-scanline: rgba(0, 10, 30, 0.3);
+  --scanline-opacity: 0.25;
+  --color-code-bg: #01040a;
+  --color-code-text: #f8fafc;
+}
 
-  --color-code-bg: #f8fafc;
-  --color-code-text: #334155;
-
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+/* --- Volcanic (Contrast) Theme --- */
+[data-theme="volcanic"] {
+  --color-bg: #0c0000;
+  --color-bg-subtle: #1a0000;
+  --color-surface: #260000;
+  --color-border: #4d0000;
+  --color-text: #fff5f5;
+  --color-text-muted: #ff9999;
+  --color-text-faint: #800000;
+  --color-accent: #ff4d00;
+  /* Magma Orange */
+  --color-accent-light: rgba(255, 77, 0, 0.15);
+  --color-glow: rgba(255, 77, 0, 0.6);
+  --color-scanline: rgba(20, 0, 0, 0.4);
+  --scanline-opacity: 0.3;
+  --color-code-bg: #050000;
+  --color-code-text: #fff5f5;
 }
 
 /* ============================================================

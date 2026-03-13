@@ -1,0 +1,99 @@
+.themeGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+}
+
+.themeCard {
+    position: relative;
+    background: var(--theme-bg);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    text-align: left;
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-premium);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    overflow: hidden;
+    color: var(--color-text);
+    /* Ensure contrast */
+}
+
+.themeCard:hover {
+    transform: translateY(-4px);
+    border-color: var(--theme-accent);
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.5);
+}
+
+.themeCard.active {
+    border-color: var(--theme-accent);
+    box-shadow: 0 0 0 2px var(--theme-accent);
+}
+
+.preview {
+    height: 120px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.circle {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-2);
+}
+
+.line {
+    height: 8px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.name {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+}
+
+.desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+.check {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    background: var(--theme-accent);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .themeGrid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+}

@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ThemeSwitcher from '../components/ThemeSwitcher';
 import Script from 'next/script'; // Import Script for GA
 import './globals.css';
 import './typography.css';
@@ -17,9 +18,8 @@ export const metadata = {
 const themeScript = `
 (function(){
   try {
-    var t = localStorage.getItem('theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.documentElement.setAttribute('data-theme', t || (prefersDark ? 'dark' : 'light'));
+    var t = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
   } catch(e) {}
 })();
 `;
@@ -57,6 +57,7 @@ export default function RootLayout({ children }) {
                     <main className="page-main">
                         {children}
                     </main>
+                    <ThemeSwitcher />
                     <Footer />
                 </div>
             </body>
