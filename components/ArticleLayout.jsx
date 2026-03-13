@@ -66,7 +66,7 @@ export default function ArticleLayout({ frontmatter, children, headings }) {
                             {tags?.length > 0 && (
                                 <div className={styles.tags}>
                                     {tags.map(tag => (
-                                        <span key={tag} className="tag">{tag}</span>
+                                        <span key={tag} className={styles.tag}>{tag}</span>
                                     ))}
                                 </div>
                             )}

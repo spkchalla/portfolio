@@ -1,13 +1,9 @@
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import remarkMath from 'remark-math';
-import remarkGfm from 'remark-gfm';
-import rehypeKatex from 'rehype-katex';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypePrettyCode from 'rehype-pretty-code';
 import { getContentBySlug, getSlugsForType } from '../../../lib/mdx-loader';
+import { mdxOptions } from '../../../lib/mdx-options';
 import ArticleLayout from '../../../components/ArticleLayout';
+import { mdxComponents } from '../../../components/mdx-components';
 
 export async function generateStaticParams() {
     return getSlugsForType('articles');
@@ -15,7 +11,8 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
     try {
-        const { frontmatter } = getContentBySlug('articles', params.slug);
+        const { slug } = await params;
+        const { frontmatter } = getContentBySlug('articles', slug);
         return {
             title: frontmatter.title,
             description: frontmatter.summary,
@@ -42,22 +39,11 @@ function extractHeadings(content) {
     return headings;
 }
 
-const mdxOptions = {
-    mdxOptions: {
-        remarkPlugins: [remarkMath, remarkGfm],
-        rehypePlugins: [
-            [rehypePrettyCode, { theme: 'github-dark', keepBackground: true }],
-            rehypeKatex,
-            rehypeSlug,
-            [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-        ],
-    },
-};
-
-export default function ArticlePage({ params }) {
+export default async function ArticlePage({ params }) {
     let frontmatter, content;
     try {
-        ({ frontmatter, content } = getContentBySlug('articles', params.slug));
+        const { slug } = await params;
+        ({ frontmatter, content } = getContentBySlug('articles', slug));
     } catch {
         notFound();
     }
@@ -66,7 +52,7 @@ export default function ArticlePage({ params }) {
 
     return (
         <ArticleLayout frontmatter={frontmatter} headings={headings}>
-            <MDXRemote source={content} options={mdxOptions} />
+            <MDXRemote components={mdxComponents} source={content} options={mdxOptions} />
         </ArticleLayout>
     );
 }

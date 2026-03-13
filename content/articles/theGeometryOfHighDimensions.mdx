@@ -4,33 +4,83 @@ date: "2026-03-11"
 summary: "How objects behave in High Dimensions"
 tags: ["High Dimensions", "Mathematics", "Data Science"]
 ---
-# The Geometry of High Dimensions.
+Have you ever wondered what a higher-dimensional object looks like?
 
-Have you ever thought how a higher dimensional polygon looks like? I did. But couldn't understand how it would look.
-It was so un-comprehendable, that I was unable to say what it should even be like, but then I caught the Foundations of Data Science book by "Avrim Blum" in which he explained the geometry of high dimensions.
+I certainly did. But I could not even imagine what such an object might look like. It felt impossible to visualize. That changed when I came across the book *Foundations of Data Science* by Avrim Blum, where the geometry of high dimensions is explained in a very intuitive way.
 
-Let us start simple.
+Let us start with something simple.
 
-Let us take the example of a cube of side $s$. Obviously we get a 3-dimensional idea of how a cube is.
-If I ask how does that look once I project that to a 2-dimensions? Yes, it becomes a square of side $s$. Great, now tell me what is the projection of a cube in 1-dimension? It is a straight line of length of side $s$.
+Consider a cube with side length \(s\). We naturally think of it as a three-dimensional object.
 
-Great, now that was a great recap, regarding what a cube is in all 3 dimensions. Now we shall analyze it.
-We could see that no matter what dimension it is, the side of cube is $s$ is all directions. That is what makes it a cube.
+Now suppose we project this cube into two dimensions. What do we get? A square with side length \(s\).
 
-Keeping this in mind, we shall move forward.
+What if we project it into one dimension? Then it becomes a straight line segment of length \(s\).
 
-### What happens to volume of the cube in $d$-dimensions, where the side is decreased by a factor of $\epsilon$
+So in different dimensions we see:
 
-That is a great question to think in the beginning to the Geometry of Higher dimensinons as this is one of the reason, we often hear the word *"curse of dimensionality"*.
+- 3D → cube  
+- 2D → square  
+- 1D → line segment  
 
-As per our definition, We know that a cube is an object of side $s$ in all dimensions. So, we shall do the least. Decrease the side by a factor of $\epsilon$ and compute the volume, which is $(s')^{d}$.
+The important observation is that in every case the side length remains \(s\). A cube can therefore be thought of as an object whose side length is \(s\) in every dimension.
+
+Keeping this idea in mind, we can move forward.
+
+---
+
+### What happens to the volume of a cube in \(d\) dimensions if the side shrinks by a factor of \(\epsilon\)?
+
+This question gives us one of the first glimpses into the geometry of high dimensions and helps explain why we often hear the phrase **“curse of dimensionality.”**
+
+For a \(d\)-dimensional cube with side length \(s\), the volume is
 
 $$
 V(d) = s^d
 $$
 
-If the side length shrinks by a factor of $\epsilon$:
+Now suppose the side length shrinks by a factor of $\epsilon$.  
+The new side length becomes
+
+$$
+s' = (1-\epsilon)s
+$$
+
+The new volume is therefore
 
 $$
 V'(d) = (1-\epsilon)^d \cdot s^d = (1-\epsilon)^d \cdot V(d)
 $$
+
+As the dimension \(d\) increases, the term \((1-\epsilon)^d\) rapidly approaches zero.
+
+This means
+
+$$
+V'(d) \rightarrow 0 \quad \text{as} \quad d \rightarrow \infty
+$$
+
+<Image 
+  src="/articles/volume_shrink_high_dimensions.png" 
+  width={200} 
+  height={200} 
+  alt="Volume Shrinkage in High Dimensions" 
+  caption="The volume of a cube shrinks rapidly as dimensions increase."
+/>
+
+Let us pause and think about what this means.
+
+By shrinking the side length slightly in every dimension, the volume decreases extremely quickly as the number of dimensions grows.
+
+This has a surprising implication.
+
+In the three-dimensional world we live in, the volume of an object is spread throughout the object. The interior of the object contains most of the volume.
+
+But in very high dimensions something different happens.
+
+If removing a thin layer from the surface causes the volume to drop almost to zero, then most of the volume must already be located near the surface.
+
+In other words:
+
+> In high dimensions, the volume of an object is concentrated near its surface.
+
+In the book *Foundations of Data Science*, the authors demonstrate this phenomenon using spheres and show that most of the mass of a high-dimensional sphere lies close to its surface rather than near its center.

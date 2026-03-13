@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getAllArticles } from '../../lib/mdx-loader';
 import { buildContentIndex } from '../../lib/content-index';
 import Search from '../../components/Search';
+import ScrollReveal from '../../components/ScrollReveal';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -16,32 +17,33 @@ export default function ArticlesPage() {
     return (
         <div className="container container--narrow">
             <header className={styles.pageHeader}>
-                <h1 className={styles.pageTitle}>Articles</h1>
-                <p className="text-muted">Technical writing on Linux, systems programming, and CS fundamentals.</p>
-                <div style={{ marginTop: 'var(--space-4)' }}>
-                    <Search index={index} />
-                </div>
+                <ScrollReveal animation="fade-up">
+                    <h1 className={styles.pageTitle}>Articles</h1>
+                    <p className="text-muted">Technical writing on Linux, systems programming, and CS fundamentals.</p>
+                    <div style={{ marginTop: 'var(--space-4)' }}>
+                        <Search index={index} />
+                    </div>
+                </ScrollReveal>
             </header>
 
-            <ul className={styles.list} role="list">
+            <div className={styles.list}>
                 {articles.map((article, i) => (
-                    <li key={article.slug} className={`animate-fade-in-up delay-${Math.min(i + 1, 5)}`}>
-                        <Link href={`/articles/${article.slug}`} className={styles.item}>
+                    <ScrollReveal key={article.slug} animation="fade-up" delay={i * 50}>
+                        <Link href={`/articles/${article.slug}`} className={`card ${styles.item}`}>
                             <div className={styles.itemLeft}>
                                 <time className="text-sm text-faint">
                                     {new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                 </time>
                                 <h2 className={styles.itemTitle}>{article.title}</h2>
-                                <p className={`text-sm text-muted ${styles.itemSummary}`}>{article.summary}</p>
+                                <p className={`text-muted ${styles.itemSummary}`}>{article.summary}</p>
                                 <div style={{ display: 'flex', gap: 'var(--space-2)', marginTop: 'var(--space-2)', flexWrap: 'wrap' }}>
                                     {article.tags?.map(t => <span key={t} className="tag">{t}</span>)}
                                 </div>
                             </div>
-                            <span className={styles.arrow}>&rarr;</span>
                         </Link>
-                    </li>
+                    </ScrollReveal>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

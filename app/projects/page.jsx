@@ -1,4 +1,5 @@
 import { getAllProjects } from '../../lib/mdx-loader';
+import ScrollReveal from '../../components/ScrollReveal';
 import styles from './page.module.css';
 
 const statusColors = {
@@ -12,35 +13,38 @@ export default function ProjectsPage() {
     return (
         <div className="container container--narrow">
             <header className={styles.header}>
-                <h1 className={styles.title}>Projects</h1>
-                <p className="text-muted">Things I have built — systems tools, research experiments, and explorations.</p>
+                <ScrollReveal animation="fade-up">
+                    <h1 className={styles.title}>Projects</h1>
+                    <p className="text-muted">Things I have built — systems tools, research experiments, and explorations.</p>
+                </ScrollReveal>
             </header>
 
             <div className={styles.grid}>
                 {projects.map((project, i) => {
-                    const status = statusColors[project.status];
+                    const status = statusColors[project.status] || statusColors.Experimental;
                     return (
-                        <a
-                            key={project.slug}
-                            href={project.href || `/projects/${project.slug}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`card animate-fade-in-up delay-${i + 1} ${styles.card}`}
-                        >
-                            <div className={styles.cardHeader}>
-                                <h2 className={styles.projectName}>{project.name}</h2>
-                                <span
-                                    className={styles.status}
-                                    style={{ background: status.bg, color: status.color, border: `1px solid ${status.border}` }}
-                                >
-                                    {project.status}
-                                </span>
-                            </div>
-                            <p className={`text-muted ${styles.description}`}>{project.description}</p>
-                            <div className={styles.tags}>
-                                {project.tags.map(t => <span key={t} className="tag">{t}</span>)}
-                            </div>
-                        </a>
+                        <ScrollReveal key={project.slug} animation="fade-up" delay={i * 50}>
+                            <a
+                                href={project.href || `/projects/${project.slug}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`card ${styles.card}`}
+                            >
+                                <div className={styles.cardHeader}>
+                                    <h2 className={styles.projectName}>{project.name || project.title}</h2>
+                                    <span
+                                        className={styles.status}
+                                        style={{ background: status.bg, color: status.color, border: `1px solid ${status.border}` }}
+                                    >
+                                        {project.status}
+                                    </span>
+                                </div>
+                                <p className={`text-muted ${styles.description}`}>{project.description}</p>
+                                <div className={styles.tags}>
+                                    {project.tags.map(t => <span key={t} className="tag">{t}</span>)}
+                                </div>
+                            </a>
+                        </ScrollReveal>
                     );
                 })}
             </div>
