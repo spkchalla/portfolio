@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Script from 'next/script'; // Import Script for GA
 import './globals.css';
 import './typography.css';
 import 'katex/dist/katex.min.css';
@@ -27,6 +28,21 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en" suppressHydrationWarning>
             <head>
+                {/* Google Tag (gtag.js) */}
+                <Script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=G-MXDHL8LHH5"
+                    strategy="afterInteractive"
+                />
+                <Script id="google-analytics" strategy="afterInteractive">
+                    {`
+                      window.dataLayer = window.dataLayer || [];
+                      function gtag(){dataLayer.push(arguments);}
+                      gtag('js', new Date());
+                      gtag('config', 'G-MXDHL8LHH5');
+                    `}
+                </Script>
+
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <link
