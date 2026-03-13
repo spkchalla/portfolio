@@ -1,0 +1,61 @@
+---
+title: "The connection between Information Theory and Geometry of High Dimensions"
+date: "2026-03-11"
+summary: "Sample summary"
+tags: ["Information Theory", "Geometry of High Dimensions", "Data Science"]
+---
+
+### Let us once revisit the geometry of objects in Higher Dimensions.
+
+Let us take a sphere in $d$ dimensions, where the sphere is of radius 1. This means that the object that is called to be a sphere is having points equidistant in all directions. In other words, it is a locus of points that are of distance 1 from the origin. Let us see some counter-intuitive magic.
+
+Before coming to the sphere in higher dimensions, we shall first construct the sphere. That said, we shall do that by generating the points that lie on it.
+
+Now comes the billion dollar question: how do we generate the points in $d$ dimensions?
+
+We can do this by generating each component of a point in $d$ dimensions using a Gaussian distribution. That is,
+
+$\bar x = (x_1, x_2, ...., x_n)$
+
+where each $x_i$ is generated from $\mathcal{N}(0,1)$.
+
+Now let us see what the distance is between the origin and the points generated. Why? Because that is exactly what we would check to see whether the generated points lie inside or outside the sphere.
+
+So the distance between the origin $\bar o$ and the point $\bar x$ is
+
+$$
+\sqrt{(\bar y_i - \bar o)^2}
+$$
+
+Let us now take expectation over the point:
+
+$$
+\mathbb{E}(\bar x)
+$$
+
+### The connection between Information Theory and Higher Dimensional Geometry
+
+From Jensen's inequality we get
+
+$$
+\mathbb{E}(f(x)) \ge f(\mathbb{E}(x))
+$$
+
+Applying this,
+
+$$
+\mathbb{E}(\sqrt{(\bar y_i - \bar o)^2}) \ge \sqrt{(\mathbb{E}(\bar y_i - \bar o)^2)}
+$$
+
+Since the Gaussian we took has zero mean and unit variance, we know that
+
+$$
+\sqrt{(\mathbb{E}(\bar y_i - \bar o)^2)} 
+= \sqrt{(\mathbb{E}(\bar y_i)^2)} 
+= \sqrt{1 + 1 + 1 + ... + 1_d} 
+= \sqrt{d}
+$$
+
+This leads us to a surprising perspective: there lies no point whose distance from the origin is less than $\sqrt{d}$.
+
+This shows that in higher dimension $d$, the minimum distance at which the generated points lie is approximately $\sqrt{d}$ from the origin. As a consequence, the volume of a unit-radius sphere becomes almost zero in high dimensions.
