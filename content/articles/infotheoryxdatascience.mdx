@@ -1,61 +1,143 @@
 ---
-title: "The connection between Information Theory and Geometry of High Dimensions"
+title: "The Connection Between Information Theory and the Geometry of High Dimensions"
 date: "2026-03-11"
-summary: "Exploring why almost all points in high dimensions lie about √d away from the origin"
+summary: "Why Gaussian points in high dimensions typically lie at distance √d from the origin"
 tags: ["Information Theory", "Geometry of High Dimensions", "Data Science"]
 ---
 
-### Let us once revisit the geometry of objects in Higher Dimensions.
+### Let us revisit the geometry of objects in higher dimensions.
 
-Let us take a sphere in $d$ dimensions, where the sphere is of radius 1. This means that the object that is called to be a sphere is having points equidistant in all directions. In other words, it is a locus of points that are of distance 1 from the origin. Let us see some counter-intuitive magic.
+Suppose we want to understand how points behave in a $d$-dimensional space.  
+One useful way to study this is through **Gaussian distributions**, which play a central role in probability, statistics, and information theory.
 
-Before coming to the sphere in higher dimensions, we shall first construct the sphere. That said, we shall do that by generating the points that lie on it.
-
-Now comes the billion dollar question: how do we generate the points in $d$ dimensions?
-
-We can do this by generating each component of a point in $d$ dimensions using a Gaussian distribution. That is,
-
-$\bar x = (x_1, x_2, ...., x_n)$
-
-where each $x_i$ is generated from $\mathcal{N}(0,1)$.
-
-Now let us see what the distance is between the origin and the points generated. Why? Because that is exactly what we would check to see whether the generated points lie inside or outside the sphere.
-
-So the distance between the origin $\bar o$ and the point $\bar x$ is
+Consider a vector
 
 $$
-\sqrt{(\bar y_i - \bar o)^2}
+x = (x_1, x_2, \dots, x_d)
 $$
 
-Let us now take expectation over the point:
+where each component is drawn independently from a standard Gaussian distribution
 
 $$
-\mathbb{E}(\bar x)
+x_i \sim \mathcal{N}(0,1)
 $$
 
-### The connection between Information Theory and Higher Dimensional Geometry
+This means every coordinate has mean $0$ and variance $1$.
 
-From Jensen's inequality we get
+---
 
-$$
-\mathbb{E}(f(x)) \ge f(\mathbb{E}(x))
-$$
+### Distance from the origin
 
-Applying this,
-
-$$
-\mathbb{E}(\sqrt{(\bar y_i - \bar o)^2}) \ge \sqrt{(\mathbb{E}(\bar y_i - \bar o)^2)}
-$$
-
-Since the Gaussian we took has zero mean and unit variance, we know that
+To understand where these points lie, we examine the distance of the vector from the origin.  
+The Euclidean norm of $x$ is
 
 $$
-\sqrt{(\mathbb{E}(\bar y_i - \bar o)^2)} 
-= \sqrt{(\mathbb{E}(\bar y_i)^2)} 
-= \sqrt{1 + 1 + 1 + ... + 1_d} 
-= \sqrt{d}
+\|x\| = \sqrt{\sum_{i=1}^{d} x_i^2}
 $$
 
-This leads us to a surprising perspective: there lies no point whose distance from the origin is less than $\sqrt{d}$.
+Working with the **squared norm** makes the analysis simpler:
 
-This shows that in higher dimension $d$, the minimum distance at which the generated points lie is approximately $\sqrt{d}$ from the origin. As a consequence, the volume of a unit-radius sphere becomes almost zero in high dimensions.
+$$
+\|x\|^2 = \sum_{i=1}^{d} x_i^2
+$$
+
+Now let us compute its expectation.
+
+Because expectation is linear,
+
+$$
+\mathbb{E}[\|x\|^2]
+= \mathbb{E}\left[\sum_{i=1}^{d} x_i^2\right]
+= \sum_{i=1}^{d} \mathbb{E}[x_i^2]
+$$
+
+For a standard Gaussian variable,
+
+$$
+\mathbb{E}[x_i^2] = 1
+$$
+
+Therefore,
+
+$$
+\mathbb{E}[\|x\|^2] = d
+$$
+
+This means the **expected squared distance from the origin grows linearly with the dimension**.
+
+Taking the square root suggests that the typical distance of a randomly generated point is roughly
+
+$$
+\|x\| \approx \sqrt{d}
+$$
+
+---
+
+### A surprising phenomenon
+
+At first glance this may not seem surprising.  
+However, something deeper happens in high dimensions.
+
+As the dimension increases, the probability mass of the Gaussian distribution **concentrates in a thin shell** around radius $\sqrt{d}$.
+
+In other words, most randomly generated points satisfy
+
+$$
+\|x\| \in [\sqrt{d} - O(1), \sqrt{d} + O(1)]
+$$
+
+with very high probability.
+
+So even though the space becomes larger as $d$ grows, the points do not spread everywhere.  
+Instead, they gather in a narrow band at distance about $\sqrt{d}$ from the origin.
+
+This phenomenon is known as **concentration of measure**.
+
+---
+
+### Relation to high-dimensional geometry
+
+Now consider the unit sphere
+
+$$
+\|x\| = 1
+$$
+
+in $d$ dimensions.
+
+Compared to the Gaussian shell around $\sqrt{d}$, this sphere lies extremely close to the origin relative to where most Gaussian points appear.
+
+As the dimension increases, the volume of the unit ball
+
+$$
+B_d = \{x : \|x\| \le 1\}
+$$
+
+shrinks rapidly.  
+In fact, the volume is
+
+$$
+V_d = \frac{\pi^{d/2}}{\Gamma(d/2 + 1)}
+$$
+
+and it approaches **zero** as $d \to \infty$.
+
+This illustrates one of the most striking aspects of high-dimensional geometry:  
+most of the “space” moves away from the center.
+
+---
+
+### Why this matters in information theory
+
+Gaussian distributions are central in information theory because they maximize entropy under variance constraints.  
+As a result, many high-dimensional probabilistic systems behave similarly to Gaussian vectors.
+
+The shell phenomenon around $\sqrt{d}$ also appears in the concept of **typical sets**, where most probability mass concentrates in a small region of the space.
+
+Understanding this geometric structure helps explain why high-dimensional probability behaves so differently from our low-dimensional intuition.
+
+---
+
+High-dimensional spaces often appear mysterious at first.  
+Yet through simple probabilistic arguments, we begin to see an elegant geometric pattern emerge:  
+as the dimension grows, randomness organizes itself into surprisingly structured forms.
