@@ -6,11 +6,11 @@ export const metadata = {
 };
 
 const interests = [
-    'Neural Networks',
-    'Mathematics',
-    'Linux',
-    'Projects in Rust',
-    'Technical writing',
+    'Neural Networks (Geometric Perspective)',
+    'Systems Programming (Rust)',
+    'Mathematical Models',
+    'Foundations of Data Science',
+    'Internal Mechanics',
 ];
 
 export default function AboutPage() {
@@ -23,16 +23,19 @@ export default function AboutPage() {
 
                 <div className={`animate-fade-in-up delay-1 prose ${styles.bio}`}>
                     <p>
-                        I am {process.env.NEXT_PUBLIC_NAME || 'S.P. Kumar Challa'}, a Computer Science student with a focus on Neural Networks, Mathematics and Linux Systems.
-                        I build tools, read source code, and write about what I find.
+                        I’m Shanmukha Padma Kumar Challa, a CSE student exploring how systems and mathematical models work beneath the surface.
                     </p>
                     <p>
-                        This site is where I publish technical articles on topics I am actively studying,
-                        journal entries on the process of learning, and exploratory ideas — some of which become projects.
+                        Right now, I’m focused on neural networks from a geometric perspective, particularly around the idea of equivalent representations. Alongside that, I’m working in Rust by building a password manager and strengthening my understanding of systems through hands-on work. I’m also studying concepts from <em>Foundations of Data Science</em> to ground this exploration in theory.
                     </p>
                     <p>
-                        I am currently spending most of my time understanding how neural networks work at the deepest level possible,
-                        writing Rust, and exploring mathematics.
+                        I tend to build things either to understand something properly or to remove friction I’ve personally experienced. Projects like MenU came out of that—taking a small but recurring problem and turning it into a simple, usable system.
+                    </p>
+                    <p>
+                        My approach is problem-driven. I go as deep as needed to solve what’s in front of me, and if something continues to hold my attention, I follow it further. I’m particularly drawn to understanding internals—how things actually work rather than just how to use them.
+                    </p>
+                    <p>
+                        Over time, I aim to move deeper into systems and research-oriented work, whether that takes shape through engineering or more theoretical exploration.
                     </p>
                 </div>
 
