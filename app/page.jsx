@@ -24,26 +24,26 @@ export default function HomePage() {
                 <ScrollReveal parallaxSpeed={-0.15}>
                     <div style={{
                         position: 'absolute',
-                        top: '10%',
-                        right: '5%',
-                        width: '300px',
-                        height: '300px',
+                        top: '15%',
+                        right: '8%',
+                        width: '180px',
+                        height: '180px',
                         background: 'radial-gradient(circle, var(--color-accent) 0%, transparent 70%)',
-                        opacity: 0.1,
-                        filter: 'blur(100px)',
+                        opacity: 0.08,
+                        filter: 'blur(80px)',
                         zIndex: 0
                     }} />
                 </ScrollReveal>
                 <ScrollReveal parallaxSpeed={0.1}>
                     <div style={{
                         position: 'absolute',
-                        bottom: '10%',
-                        left: '5%',
-                        width: '400px',
-                        height: '400px',
+                        bottom: '15%',
+                        left: '8%',
+                        width: '240px',
+                        height: '240px',
                         background: 'radial-gradient(circle, #ff00c1 0%, transparent 70%)',
-                        opacity: 0.1,
-                        filter: 'blur(120px)',
+                        opacity: 0.08,
+                        filter: 'blur(100px)',
                         zIndex: 0
                     }} />
                 </ScrollReveal>

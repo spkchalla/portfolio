@@ -11,7 +11,7 @@ export default function GeometricHero() {
         let animationFrameId;
         let time = 0;
 
-        const layers = [3, 5, 5, 3]; // Neural network layer architecture
+        const layers = [6, 10, 10, 8, 6]; // More populous neural network architecture
         const nodes = [];
 
         const resize = () => {
@@ -48,14 +48,13 @@ export default function GeometricHero() {
             time += 0.01;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Update node positions (symmetry/equivalent representation simulation)
+            // Update node positions
             nodes.forEach(node => {
-                // Nodes in the same layer "float" and swap influence
                 node.y = node.baseY + Math.sin(time + node.phase) * 20;
             });
 
             // Draw connections
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 0.5; // Thinner lines for a more delicate look
             for (let i = 0; i < nodes.length; i++) {
                 for (let j = i + 1; j < nodes.length; j++) {
                     const n1 = nodes[i];
@@ -64,7 +63,7 @@ export default function GeometricHero() {
                     // Only connect adjacent layers
                     if (n2.lIndex === n1.lIndex + 1) {
                         const dist = Math.sqrt((n1.x - n2.x) ** 2 + (n1.y - n2.y) ** 2);
-                        const opacity = 0.15 * (1 - dist / (canvas.width / 2));
+                        const opacity = 0.2 * (1 - dist / (canvas.width / 2)); // Slightly higher base opacity
 
                         if (opacity > 0) {
                             ctx.beginPath();
@@ -74,7 +73,7 @@ export default function GeometricHero() {
 
                             // Pulse effect on some connections
                             if ((n1.nIndex + n2.nIndex) % 3 === 0) {
-                                ctx.strokeStyle = `rgba(59, 130, 246, ${opacity + Math.sin(time * 2) * 0.1})`;
+                                ctx.strokeStyle = `rgba(59, 130, 246, ${opacity + Math.sin(time * 2) * 0.15})`;
                             }
 
                             ctx.stroke();
@@ -86,17 +85,17 @@ export default function GeometricHero() {
             // Draw nodes
             nodes.forEach(node => {
                 ctx.beginPath();
-                ctx.arc(node.x, node.y, 4, 0, Math.PI * 2);
+                ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2); // Smaller particles
                 ctx.fillStyle = 'var(--color-accent)';
-                ctx.shadowBlur = 15;
+                ctx.shadowBlur = 8; // Tighter glow
                 ctx.shadowColor = 'var(--color-accent)';
                 ctx.fill();
                 ctx.shadowBlur = 0;
 
                 // Outer ring
                 ctx.beginPath();
-                ctx.arc(node.x, node.y, 8 + Math.sin(time + node.phase) * 2, 0, Math.PI * 2);
-                ctx.strokeStyle = `rgba(59, 130, 246, 0.2)`;
+                ctx.arc(node.x, node.y, 4 + Math.sin(time + node.phase) * 1.5, 0, Math.PI * 2); // Smaller outer ring
+                ctx.strokeStyle = `rgba(59, 130, 246, 0.25)`; // Slightly more visible
                 ctx.stroke();
             });
 

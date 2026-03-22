@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
                 />
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
             </head>
-            <body>
+            <body suppressHydrationWarning>
                 <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
                     <Navbar />
                     <main className="page-main">
