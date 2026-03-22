@@ -1,5 +1,7 @@
 import Mermaid from './Mermaid';
 
+import { MDXImage } from './MDXImage';
+
 const Problem = ({ children }) => (
     <div className="callout callout--problem">
         <div className="callout-header">
@@ -19,7 +21,7 @@ const Solution = ({ children }) => (
 );
 
 export const mdxComponents = {
-    // ... items from previous turn
+    Image: MDXImage,
     Mermaid: Mermaid,
     Problem,
     Solution,
