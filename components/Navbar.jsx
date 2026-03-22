@@ -9,7 +9,9 @@ import styles from './Navbar.module.css';
 const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/articles', label: 'Articles' },
+    { href: '/notes', label: 'Notes' },
     { href: '/journal', label: 'Journal' },
+    { href: '/now', label: 'Now' },
     { href: '/projects', label: 'Projects' },
     { href: '/about', label: 'About' },
 ];

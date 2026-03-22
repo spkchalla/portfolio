@@ -3,7 +3,7 @@ import { getAllArticles, getAllProjects } from '../lib/mdx-loader';
 import { buildContentIndex } from '../lib/content-index';
 import Search from '../components/Search';
 import MouseTracker from '../components/MouseTracker';
-import ParticleBackground from '../components/ParticleBackground';
+import GeometricHero from '../components/GeometricHero';
 import ScrollReveal from '../components/ScrollReveal';
 import styles from './page.module.css';
 
@@ -17,7 +17,7 @@ export default function HomePage() {
             <MouseTracker />
             {/* Hero */}
             <section className={styles.hero}>
-                <ParticleBackground />
+                <GeometricHero />
                 <div className={styles.heroGradient}></div>
 
                 {/* Parallax background blobs */}

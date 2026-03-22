@@ -183,3 +183,44 @@
 [data-rehype-pretty-code-title]+pre {
     border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
+
+/* Callouts for Project Case Studies */
+.prose .callout {
+    margin: var(--space-8) 0;
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-border);
+}
+
+.prose .callout--problem {
+    background: rgba(255, 107, 107, 0.05);
+    border-color: #ff6b6b;
+}
+
+.prose .callout--solution {
+    background: rgba(81, 154, 102, 0.05);
+    border-color: var(--color-success, #519a66);
+}
+
+.prose .callout-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-3);
+    text-transform: uppercase;
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wider);
+}
+
+.prose .callout--problem .callout-header {
+    color: #ff6b6b;
+}
+
+.prose .callout--solution .callout-header {
+    color: var(--color-success, #519a66);
+}
+
+.prose .callout p:last-child {
+    margin-bottom: 0;
+}

@@ -1,0 +1,35 @@
+---
+title: "Foundations of Data Science: High Dimensional Geometry"
+date: "2026-03-22"
+tags: ["Data Science", "Geometry", "Mathematics"]
+summary: "Notes and reflections on the geometric properties of high-dimensional data, based on the 'Foundations of Data Science' text."
+---
+
+# High Dimensional Geometry
+
+These are my active notes as I work through *Foundations of Data Science*.
+
+## The Law of Large Numbers (Geometric Perspective)
+
+In high dimensions, volume behaves counter-intuitively. Most of the volume of a high-dimensional cube is near the boundary, and most of the volume of a sphere is near the equator.
+
+<Mermaid chart={`
+graph LR
+    A[Unit Cube] --> B[Volume at Boundary]
+    C[Unit Sphere] --> D[Volume at Equator]
+    B --- D
+`} />
+
+## Implications for Neural Networks
+
+When we project data into high-dimensional hidden layers, we are essentially placing it in a space where these geometric properties dominate. 
+- **Equivalency:** If we rotate the layer (orthogonality), the relative distances remain the same, but the "meaning" of individual neurons changes.
+- **Symmetry:** Understanding which rotations preserve the network's output is key to understanding its internal representations.
+
+## Key Formulas
+
+The volume of a $d$-dimensional sphere of radius $r$ is given by:
+
+$$V(d) = \frac{\pi^{d/2}}{\Gamma(\frac{d}{2} + 1)} r^d$$
+
+As $d \to \infty$, this volume rapidly concentrates...

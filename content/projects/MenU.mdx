@@ -8,6 +8,32 @@ tags: ["Gemini API", "Node.js", "Express", "MongoDB", "React"]
 href: "https://github.com/spkchalla/MenU"
 ---
 
-# MenU
+# MenU: Solving Dietary Friction
 
-A full-stack platform to create, manage, and view weekly dietary menus with a clean backend architecture and simple frontend.
+<Problem>
+    Managing weekly meal plans often involves manual overhead, scattered lists, and repetitive decision-making.
+    I found myself spending too much time calculating dietary requirements and organizing shopping lists.
+</Problem>
+
+MenU is a full-stack platform designed to automate this process. It takes small, recurring dietary problems and turns them into a simple, usable system with a clean backend architecture.
+
+<Mermaid chart={`
+graph TD
+    A[Client - React] --> B[API - Express/Node]
+    B --> C[Auth - JWT]
+    B --> D[Database - MongoDB]
+    B --> E[AI Integration - Gemini API]
+    E --> F[Automated Menu Gen]
+`} />
+
+<Solution>
+    A centralized platform where I can generate, manage, and view menus with minimal friction.
+    By offloading the "decision logic" to a structured system, I reclaimed time for deeper exploration.
+</Solution>
+
+## Technical Internals
+
+The system uses a **clean architecture** to ensure the core logic remains independent of external frameworks.
+- **Backend:** Node.js/Express with a modular router structure.
+- **Frontend:** Responsive React components focused on high interaction efficiency.
+- **Intelligence:** Uses the Gemini API to suggest diverse meal combinations based on historical preferences.
