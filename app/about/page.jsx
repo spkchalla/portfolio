@@ -1,8 +1,8 @@
 import styles from './page.module.css';
 
 export const metadata = {
-    title: 'About',
-    description: 'About S.P. Kumar Challa — CS student, systems enthusiast, and occasional writer.',
+    title: 'About | S.P. Kumar Challa',
+    description: 'About S.P. Kumar Challa (SPKumar) — CS student, systems enthusiast, and researcher.',
 };
 
 const interests = [

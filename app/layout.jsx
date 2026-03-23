@@ -7,11 +7,41 @@ import './typography.css';
 import 'katex/dist/katex.min.css';
 
 export const metadata = {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://spkumarchalla.com')),
     title: {
-        default: process.env.NEXT_PUBLIC_NAME || 'S.P. Kumar Challa',
-        template: `%s | ${process.env.NEXT_PUBLIC_NAME || 'S.P. Kumar Challa'}`,
+        default: 'S.P. Kumar Challa | Rust, Linux, Systems',
+        template: `%s | S.P. Kumar Challa`,
     },
-    description: 'Personal site — technical articles on Linux, systems programming, and computer science.',
+    description: 'Shanmukha Padma Kumar Challa (SPKumar) is a CSE student building a Rust password manager, exploring Linux systems, and researching neural networks.',
+    keywords: ['spkumar', 'spkumarchalla', 'spkchalla', 'spk challa', 'shanmukha challa', 'Rust', 'Linux', 'Systems Programming', 'Neural Networks'],
+    authors: [{ name: 'S.P. Kumar Challa' }],
+    openGraph: {
+        title: 'S.P. Kumar Challa (SPKumar)',
+        description: 'Rust, Linux systems, and neural network research.',
+        url: 'https://spkumarchalla.com',
+        siteName: 'S.P. Kumar Challa Portfolio',
+        images: [
+            {
+                url: '/og-image.png',
+                width: 1200,
+                height: 630,
+                alt: 'S.P. Kumar Challa - Rust, Linux, Systems',
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'S.P. Kumar Challa (SPKumar)',
+        description: 'Rust, Linux systems, and neural network research.',
+        images: ['/og-image.png'],
+    },
+    icons: {
+        icon: '/favicon.png',
+        shortcut: '/favicon.png',
+        apple: '/favicon.png',
+    },
 };
 
 // Prevent theme flash before hydration

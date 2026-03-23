@@ -8,7 +8,7 @@ export default function Footer() {
         <footer className={styles.footer}>
             <div className={styles.inner}>
                 <p className={styles.copy}>
-                    &copy; {year} {process.env.NEXT_PUBLIC_NAME || 'S.P. Kumar Challa'}. Built with Next.js and MDX.
+                    &copy; {year} S.P. Kumar Challa. Built with Next.js and MDX.
                 </p>
                 <nav className={styles.links} aria-label="Footer links">
                     <a

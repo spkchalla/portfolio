@@ -51,12 +51,16 @@ export default function HomePage() {
                 <div className={styles.heroInner}>
                     <ScrollReveal animation="fade-up">
                         <span className={styles.heroEyebrow}>S.P.Kumar Challa</span>
-                        <h1 className={`${styles.heroHeading} text-glitch`} data-text="Building Digital Experiences with Purpose">
-                            Building Digital<br />Experiences with Purpose
+                        <h1 className={`${styles.heroHeading} text-glitch`} data-text="Systems, Rust, and Research">
+                            Systems, Rust,<br />and Research
                         </h1>
                         <p className={styles.heroSub}>
-                            I’m S.P. Kumar Challa. I write about computer science, mathematics, and the systems I explore.
+                            I’m S.P. Kumar Challa. I build secure tools in <strong>Rust</strong>, explore <strong>Linux</strong> systems, and research the geometry of <strong>neural networks</strong>.
                         </p>
+                        {/* Hidden SEO keywords for indexers, using aria-hidden to avoid screen reader clutter */}
+                        <div style={{ position: 'absolute', width: '1px', height: '1px', padding: '0', margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', border: '0' }} aria-hidden="true">
+                            Shanmukha Padma Kumar Challa (spkchalla / SPK Challa)
+                        </div>
                         <div className={styles.heroActions}>
                             <Link href="/projects" className={styles.btnPrimary}>View Projects</Link>
                             <Link href="/about" className={styles.btnGhost}>About Me</Link>
@@ -108,23 +112,30 @@ export default function HomePage() {
                 <hr className="divider" />
             </div>
 
-            {/* Projects */}
+            {/* Key Projects */}
             <section className={`container ${styles.section}`}>
                 <ScrollReveal animation="fade-right">
-                    <p className="section-label">Projects</p>
+                    <p className="section-label">Key Projects</p>
                 </ScrollReveal>
                 <div className={styles.projectGrid}>
-                    {projectsList.map((p, i) => (
-                        <ScrollReveal key={p.slug} animation="fade-up" delay={i * 100}>
+                    {projectsList.map((project, i) => (
+                        <ScrollReveal key={project.slug} animation="fade-up" delay={i * 100}>
                             <Link
-                                href={p.href || `/projects/${p.slug}`}
+                                href={`/projects/${project.slug}`}
                                 className={`card ${styles.projectCard}`}
                             >
-                                <h3 className={styles.projectName}>{p.name || p.title}</h3>
-                                <p className={`text-muted text-sm ${styles.projectDesc}`}>{p.description}</p>
+                                <h3 className={styles.projectName}>{project.title}</h3>
+                                <p className={`text-muted text-sm ${styles.projectDesc}`}>
+                                    {project.description}
+                                </p>
                                 <div className={styles.projectTags}>
-                                    {p.tags.map(t => <span key={t} className="tag" style={{ background: 'var(--color-bg-subtle)' }}>{t}</span>)}
+                                    {project.tags?.slice(0, 3).map(tag => (
+                                        <span key={tag} className="tag" style={{ background: 'var(--color-bg-subtle)' }}>
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
+                                <span className={styles.readMore} style={{ marginTop: 'auto' }}>View Details &rarr;</span>
                             </Link>
                         </ScrollReveal>
                     ))}
