@@ -20,13 +20,43 @@
     animation: fadeInUp var(--duration-slow) var(--ease-out) both;
 }
 
+.titleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-2);
+}
+
 .title {
-    font-size: var(--text-4xl);
+    font-size: clamp(var(--text-3xl), 8vw, var(--text-5xl));
     font-weight: var(--weight-bold);
-    line-height: var(--leading-heading);
-    color: var(--color-text);
-    margin-bottom: var(--space-6);
     letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--color-text);
+}
+
+.githubLink {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-text-muted);
+    transition: all var(--duration-fast) var(--ease-out);
+    text-decoration: none;
+}
+
+.githubLink:hover {
+    background: var(--color-bg);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-1px);
 }
 
 .meta {

@@ -13,6 +13,7 @@ const navLinks = [
     { href: '/journal', label: 'Journal' },
     { href: '/now', label: 'Now' },
     { href: '/projects', label: 'Projects' },
+    { href: '/side-quests', label: 'Side Quests' },
     { href: '/about', label: 'About' },
 ];
 

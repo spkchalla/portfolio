@@ -16,7 +16,7 @@
 
 .item {
     position: relative;
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-5);
 }
 
 .dot {

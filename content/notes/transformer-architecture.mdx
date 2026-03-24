@@ -1,0 +1,25 @@
+---
+title: "Understanding Transformer Architectures"
+date: "2024-03-24"
+tags: ["AI", "Architecture", "Neural Networks"]
+summary: "A breakdown of multi-head attention and the mathematical foundations of transformer-based models."
+---
+
+# Understanding Transformer Architectures
+
+Transformers have revolutionized natural language processing by enabling models to handle long-range dependencies efficiently.
+
+## Core Components
+
+- **Self-Attention**: The mechanism that allows the model to weigh different parts of the input relative to each other.
+- **Multi-Head Attention**: Running multiple attention mechanisms in parallel to capture different types of relationships.
+- **Positional Encoding**: Adding information about the position of each word in the sequence.
+
+## Mathematical Representation
+
+The attention score is calculated as:
+$$
+\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+$$
+
+More notes to come as I progress through the research paper!
