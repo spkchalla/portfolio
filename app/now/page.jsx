@@ -55,13 +55,6 @@ export default function NowPage() {
                     </p>
                 </section>
             </div>
-
-            <footer className={`animate-fade-in-up delay-2 ${styles.footer}`}>
-                <p className="text-sm text-muted">
-                    This is a <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer" className="link">now page</a>.
-                    If you have a website, you should have one too.
-                </p>
-            </footer>
         </div>
     );
 }
