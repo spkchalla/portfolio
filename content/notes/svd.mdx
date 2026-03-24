@@ -1,0 +1,62 @@
+---
+title: "Singular Value Decomposition"
+date: "2026-03-24"
+tags: ["Data Science", "SVD", "Mathematics", "Datasets"]
+summary: "Intution and logic behind SVD"
+---
+
+## Singular Value Decomposition (SVD)
+
+Before talking about SVD, let us discuss the root cause why we wanted one like this.
+
+In linear algebra, people have some high beauty standards. The love for square matrices. These were some demigods to them. They feel that they have so many good properties. But due to the extreme love towards these kind of matrices, the rectangular matrices were left behind. 
+
+Let us discuss one of the main thing that people wanted to deal even with rectangular matrices. **The diagonalization of a matrix**. This is done in square matrices and it is a decomposition of a square matrix into 3 different matrices 
+
+$$ A = PDP^{-1} $$
+
+This kind of decomposition helps people in a lot of ways and is considered good. One of the example is $ A^{n} = PD^{n}P^{-1} $ and many other things which is not in the scope of this text.
+
+So, thus came the idea of SVD, as the diagonalization is the thing only for square matrices. In rectangular matrices, we can't do this kind of decomposition. Hence we sought of a different technique.
+
+Instead of decomposing the matrix $A$ we decompose the matrix $A^{T}A$ and find things out for this. Even finding a determinant for a rectangular matrix uses this technique and is called a pseudo inverse. So, let us deal with the new thing.
+
+
+Before going into the SVD, I shall write some of the questions I have got while reading the text on SVD in the book Foundations of Data Science by Blum.
+
+1. If there is a matrix of d rows but the rank is k given $ k < d $. Then what is the best subspace $V$ for which the matrix can be shrinked to?
+
+To know the answer, we shall first go through the situations where this comes helpful in real life. Let us taake the example of Machine learning. In this field, we typically deal with huge datasets which are often of low rank than the full rank of the matrix. In these situations, we prefer to fit the matrix into a subspace of lower dimensions which would eventually help us in doing the math over it. Great, it seems well enough. Then how?
+
+### The best fit subspace
+
+Given that we have a matrix $A$, and we want to find the best fit subspace, we denote it with the following (calm down, I shall dissect each of them).
+
+$A = UDV^{-1}$
+
+let us say that the rows in $U$ are $u_i$ and the rows of $V$ are $v_i$. The entries in the matrix $D$ are on the principal diagonal and is a diagonal matrix. We define each of the rows in each matrix soon.
+
+Let us say we have got some "kind of" eigen values and eigen vectors for the matrix $A^{T}A$. So, we follow the following procedure.
+
+$$
+\begin{align}
+A^{T}A v &= \sigma_{i} v \\
+\sigma_{i} &= \sqrt{\lambda_{i}(A^{T}A)} \\
+&= \sqrt{|\lambda_{i}|^2} \; \text{(Since it is a kind of square of the matrix, we will be getting the eigen value squared)}\\
+&= |\lambda_{i}|
+\end{align}
+
+$$
+
+We call this $\sigma_{i}$ as a singular value of the matrix $A$ and the $v$ to be singular vector. The main difference between a singular value and an eigen value is that a singular value is always positive and an eigen value can be positive as well as negative. Now we shall come back to the point of finding the best fit subspace. We say that, the vectors $v_{i}$ are the orthonormal vectors that shall span the subspace $V$ and we need to find them out. Initially, we shall go by the basic method.
+
+Let us say that we have $n$ points in $d$ dimensional space and the points are in rows of the matrix $A$. The matrix is usually of low rank when we speak about these datasets. So, we plot them on the $d$-dimensional space and figure out that one single vector $v$ which has the least perpendicular distance or the maximum projection of those points on to it. We shall call it the top singular vector. How shall we figure it out? It is that vector $v$ for which we have 
+
+$$
+\sigma_1 = \max_{\|v\| = 1} \|A v\|
+$$
+
+yet to write, not completed.
+
+### Best rank-$k$ approximation
+### Left singular vectors the $u_{i}$
