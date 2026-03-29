@@ -1,0 +1,21 @@
+---
+title: "Separating Gaussians"
+date: "2026-03-29"
+tags: ["Data Science", "SVD", "Mathematics", "Datasets"]
+summary: "How to distinguish points from same gaussian and different gaussians."
+---
+
+Let us say we are given a cluster of points and asked which points belong to same gaussian and which to different gaussians. Obviously, we would be saying if they are near, then they belong to sam gaussian and if far away, they belong to different gaussians.
+
+Good, but that is so vague and no preciseness is seen in there. So, if we are talking in math, then we need to specifiy the distance between two points so that we are saying they don't belong to the same gaussian.
+
+Let us get into it.
+
+In general, the points in a $d$-dimensional space looks like all clustered near the equator, if we say that we are keeping a direction to be north. That looks something like below.
+<Image 
+  src="/images/notes/image.png" 
+  width={200} 
+  height={200} 
+  alt="Points Clustered Near the Equator" 
+  caption="In high dimensions, most of the volume of a sphere is concentrated near its equator."
+/>
