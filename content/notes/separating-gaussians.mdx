@@ -13,9 +13,27 @@ Let us get into it.
 
 In general, the points in a $d$-dimensional space looks like all clustered near the equator, if we say that we are keeping a direction to be north. That looks something like below.
 <Image 
-  src="/images/notes/image.png" 
-  width={200} 
-  height={200} 
+  src="/images/notes/points from same gaussian.png" 
+  width={50} 
+  height={50} 
   alt="Points Clustered Near the Equator" 
   caption="In high dimensions, most of the volume of a sphere is concentrated near its equator."
 />
+Let us take a point $x$ at random from a spherical unit variance gaussian. Now rotate the coordinate system in such a way that the point is aligned to the north pole. Now independently generate another point $y$. We know that the mass is concentrated in the annulus near the equator of width $O(1)$ and at a distance of $O(\sqrt{d})$. Hence we know that the distance of the points $x$ and $y$ are at $O(\sqrt{d})$ and the distance between them is defined as 
+$$
+
+|x - y| \approx \sqrt{|x|^2 + |y|^1}
+
+$$
+
+Now let us consider points from different gaussians. Let us have 2 spherical gaussians of unit variance and seperated by a distance $\Delta$. The point $x$ is from left gaussian and the point $y$ is from right gaussian. Now the distance between them is close to $\sqrt{\Delta^2 + 2d}$. The following figure is directly taken from the book "Foundations of data science".
+<Image 
+  src="/images/notes/points from different gaussian.png" 
+  width={50} 
+  height={50} 
+  alt="Points Clustered Near the Equator" 
+  caption="Image of points from different gaussians with a distance of Delta"
+/>
+
+To undersand the reason behind why the distance between points $x$ and $y$ is $\sqrt{\Delta^2 + 2d}$ let us rotate the image and see another image.
+
