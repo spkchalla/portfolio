@@ -14,6 +14,7 @@ const navLinks = [
     { href: '/now', label: 'Now' },
     { href: '/projects', label: 'Projects' },
     { href: '/side-quests', label: 'Side Quests' },
+    { href: '/unfiltered', label: 'Unfiltered' },
     { href: '/about', label: 'About' },
 ];
 
