@@ -10,7 +10,7 @@ const statusColors = {
 
 export const metadata = {
     title: 'Side Quests',
-    description: 'Personal experiments, hobby projects, and creative explorations.',
+    description: 'Small technical deep-dives, hobby projects, and curious explorations.',
 };
 
 export default function SideQuestsPage() {

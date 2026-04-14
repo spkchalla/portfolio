@@ -7,7 +7,7 @@ import styles from './page.module.css';
 
 export const metadata = {
     title: 'Articles',
-    description: 'Technical writing on Linux internals, systems programming, and computer science.',
+    description: 'Explorations in Rust, systems programming, and high-dimensional data geometry by S.P. Kumar Challa.',
 };
 
 export default function ArticlesPage() {

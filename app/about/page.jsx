@@ -1,8 +1,8 @@
 import styles from './page.module.css';
 
 export const metadata = {
-    title: 'About | S.P. Kumar Challa',
-    description: 'About S.P. Kumar Challa (SPKumar) — CS student, systems enthusiast, and researcher.',
+    title: 'About',
+    description: 'Learn more about S.P. Kumar Challa, his background in CSE, interests in Rust, and systems programming explorer.',
 };
 
 const interests = [

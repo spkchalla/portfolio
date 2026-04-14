@@ -13,7 +13,24 @@ export async function generateMetadata({ params }) {
     try {
         const { slug } = await params;
         const { frontmatter } = getContentBySlug('journal', slug);
-        return { title: frontmatter.title, description: frontmatter.summary };
+        const title = frontmatter.title;
+        const description = frontmatter.summary || frontmatter.description || `Journal entry from ${frontmatter.date}`;
+
+        return {
+            title,
+            description,
+            openGraph: {
+                title,
+                description,
+                type: 'article',
+                publishedTime: frontmatter.date,
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title,
+                description,
+            },
+        };
     } catch {
         return {};
     }

@@ -2,7 +2,7 @@ import styles from './page.module.css';
 
 export const metadata = {
     title: 'Now',
-    description: 'What S.P. Kumar Challa is focused on right now.',
+    description: 'Current focus, ongoing projects, and what S.P. Kumar Challa is studying right now.',
 };
 
 export default function NowPage() {

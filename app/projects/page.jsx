@@ -2,6 +2,11 @@ import { getAllProjects } from '../../lib/mdx-loader';
 import ScrollReveal from '../../components/ScrollReveal';
 import styles from './page.module.css';
 
+export const metadata = {
+    title: 'Projects',
+    description: 'Systems tools, Rust applications, and experimental implementations by S.P. Kumar Challa.',
+};
+
 const statusColors = {
     Active: { bg: 'rgba(74,222,128,0.1)', color: '#4ade80', border: 'rgba(74,222,128,0.3)' },
     'In progress': { bg: 'var(--color-accent-light)', color: 'var(--color-accent)', border: 'rgba(200,100,10,0.3)' },

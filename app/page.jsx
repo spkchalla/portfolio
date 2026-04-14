@@ -7,6 +7,11 @@ import GeometricHero from '../components/GeometricHero';
 import ScrollReveal from '../components/ScrollReveal';
 import styles from './page.module.css';
 
+export const metadata = {
+    title: 'S.P. Kumar Challa | Hub',
+    description: 'Computer Science student and systems researcher. Building Rust tools, exploring Linux internals, and investigating the geometry of neural networks.',
+};
+
 export default function HomePage() {
     const articles = getAllArticles().slice(0, 3);
     const projectsList = getAllProjects().slice(0, 3);

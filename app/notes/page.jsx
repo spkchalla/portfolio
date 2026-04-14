@@ -4,7 +4,7 @@ import styles from '../journal/timeline.module.css';
 
 export const metadata = {
     title: 'Research Notes',
-    description: 'Technical notes and study reflections on systems and mathematics.',
+    description: 'Raw findings and pointers from my research in neural networks and algebraic geometry.',
 };
 
 export default function NotesPage() {

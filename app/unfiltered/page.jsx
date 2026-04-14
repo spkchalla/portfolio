@@ -4,7 +4,7 @@ import styles from '../journal/timeline.module.css';
 
 export const metadata = {
     title: 'Unfiltered',
-    description: 'Raw thoughts, interests, ideas, feelings, and opinions.',
+    description: 'Personal interests, raw thoughts, and spontaneous opinions on tech and life.',
 };
 
 export default function UnfilteredPage() {

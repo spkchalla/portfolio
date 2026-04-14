@@ -4,7 +4,7 @@ import styles from './timeline.module.css';
 
 export const metadata = {
     title: 'Journal',
-    description: 'Personal reflections on learning, studying, and ideas in progress.',
+    description: 'Direct log of my learning process, daily building, and technical progress.',
 };
 
 export default function JournalPage() {

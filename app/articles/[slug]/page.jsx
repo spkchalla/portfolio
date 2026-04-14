@@ -13,9 +13,27 @@ export async function generateMetadata({ params }) {
     try {
         const { slug } = await params;
         const { frontmatter } = getContentBySlug('articles', slug);
+        const title = frontmatter.title;
+        const description = frontmatter.summary || frontmatter.description;
+        const keywords = frontmatter.tags || [];
+
         return {
-            title: frontmatter.title,
-            description: frontmatter.summary,
+            title,
+            description,
+            keywords,
+            openGraph: {
+                title,
+                description,
+                type: 'article',
+                publishedTime: frontmatter.date,
+                authors: ['S.P. Kumar Challa'],
+                tags: keywords,
+            },
+            twitter: {
+                card: 'summary_large_image',
+                title,
+                description,
+            },
         };
     } catch {
         return {};
