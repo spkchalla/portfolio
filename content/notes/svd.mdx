@@ -86,3 +86,68 @@ But $\sum_{j=1}^{n} \|a_j\|^2 = \sum_{j=1}^{n} \sum_{k=1}^{d} a_{jk}^2$
 
 ### Best rank-$k$ approximation
 ### Left singular vectors the $u_{i}$
+### Power method for SVD
+
+Power method is an iterative method which we can approximately find the singular values and singular vectors. Given a matrix $A$, which can be either a square matrix or a rectangular matrix, we can find the singular values and singular vectors of $A$ by finding the eigen values and eigen vectors of $A^{T}A$ or $AA^{T}$.
+
+Let us say $B = A^{T}A$, where the dimensions of A is $n \times d$. Then the dimensions of $B$ is $d \times d$. Then we can find the eigen values and eigen vectors of $B$ using the power method. 
+In the power method, we find the eigen values by the following steps:
+1. Take any random vector of size $d \times 1$ and let it be $x_{0}$.
+2. Multiply $x_{0}$ by $B$ and let it be $x_{1}$.
+3. Multiply $x_{1}$ by $B$ and let it be $x_{2}$.
+4. Continue this process till $p$ times to produce $x_{p}$.
+
+Now, the eigen value and eigen vectors of $B$ is given by the following:
+
+Since the first singular value of $A$ or first eigen value of $B$ is the largest, we can find it by the following:
+
+$$
+\lambda_{1} = \frac{x_{p}^{T} B x_{p}}{x_{p}^{T} x_{p}}
+$$
+
+The first eigen vector $e_{1}$ is found out by
+$$
+e_{1} = \frac{x_{p}}{\sqrt{x_{p}^{T} x_{p}}}
+$$
+The denominator in finding $e_{1}$ is to make the vector of unit length and not to overflow the values.
+
+The proof of the power method is as follows:
+
+We know that $|\lambda_{1}| > |\lambda_{2}| > \dots > |\lambda_{d}|$. 
+and the eigen vectors are $e_{1}, e_{2}, \dots, e_{d}$. 
+
+Let us take any random vector $x_{0}$ and let it be a linear combination of the eigen vectors. 
+$$
+x_{0} = \sum_{i = 1}^{d} c_{i}e_{i}
+$$
+
+Now, we multiply $x_{0}$ by $B$ and let it be $x_{1}$. Iterate the step until $p$ no. of times.
+$$
+x_{p} = B^{p}x_{0} = B^{p}\sum_{i = 1}^{d} c_{i}e_{i}
+$$
+This can further be decomposed into
+$$
+x_{p} = \sum_{i = 1}^{d} c_{i}B^{p}e_{i}
+$$
+Since $e_{i}$ is the eigen vector of $B$, we have $Be_{i} = \lambda_{i}e_{i}$.
+$$
+x_{p} = \sum_{i = 1}^{d} c_{i}\lambda_{i}^{p}e_{i}
+$$
+We can further decompose it into 
+$$
+x_{p} = \lambda_{1}^{p} \left( c_{1}e_{1} + c_{2}\left(\frac{\lambda_{2}}{\lambda_{1}}\right)^{p}e_{2} + \dots + c_{d}\left(\frac{\lambda_{d}}{\lambda_{1}}\right)^{p}e_{d} \right)
+$$
+Since we know that $|\lambda_{1}| > |\lambda_{2}| > \dots > |\lambda_{d}|$, we have $\left|\frac{\lambda_{i}}{\lambda_{1}}\right| < 1$ for $i = 2, 3, \dots, d$.
+As $p \to \infty$, we have $\left|\frac{\lambda_{i}}{\lambda_{1}}\right|^{p} \to 0$ for $i = 2, 3, \dots, d$.
+Therefore, as $p \to \infty$, we have
+$$
+x_{p} \to \lambda_{1}^{p} c_{1}e_{1}
+$$
+Thus, the first eigen value and eigen vector of $B$ is given by the following:
+$$
+\lambda_{1} = \frac{x_{p}^{T} B x_{p}}{x_{p}^{T} x_{p}}
+$$
+$$
+e_{1} = \frac{x_{p}}{\sqrt{x_{p}^{T} x_{p}}}
+$$
+⚠️ I need to mention that I am not quite sure of how did we end up in the closed form solution of the eigen values and eigen vectors. I need to work on it.
