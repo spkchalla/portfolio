@@ -150,4 +150,12 @@ $$
 $$
 e_{1} = \frac{x_{p}}{\sqrt{x_{p}^{T} x_{p}}}
 $$
-⚠️ I need to mention that I am not quite sure of how did we end up in the closed form solution of the eigen values and eigen vectors. I need to work on it.
+⚠️ I should mention that I am not quite sure of how did we end up in the closed form solution of the eigen values and eigen vectors. I need to work on it.
+
+{/*### Applications of SVD
+A famous example of SVD can be seen in the Web page ranking.
+Let us say there are $n$ web pages where each web page is a node in the graph. There will be some pages called authority pages, which are the prominent pages regarding a specific topic. There will be hub pages, which have a list of authority pages regarding a topic and point towards them.
+
+So the definition of the hub pages and authority pages are like chicken and egg. A page is a good authority if it is pointed to by many good hubs, and a page is a good hub if it points to many good authorities. Hence comes the concept of hub weight and authority weights.
+
+Let $A$ be the adjacency matrix of the graph, where $A_{ij} = 1$ if there is a link from page $i$ to page $j$, and $A_{ij} = 0$ otherwise. */}
