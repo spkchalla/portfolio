@@ -9,11 +9,11 @@ import 'katex/dist/katex.min.css';
 export const metadata = {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://spkumarchalla.com')),
     title: {
-        default: 'S.P. Kumar Challa | Portfolio',
+        default: 'S.P. Kumar Challa | Rust, Linux, Systems',
         template: `%s | S.P. Kumar Challa`,
     },
-    description: 'Portfolio of Shanmukha Padma Kumar Challa (SPKumar). CSE student specializing in Rust, Linux systems, and Neural Networks research.',
-    keywords: ['S.P. Kumar Challa', 'spkumar', 'spkumarchalla', 'spkchalla', 'Rust Developer', 'Linux Systems', 'Neural Networks', 'Systems Programming', 'Computer Science Portfolio'],
+    description: 'Shanmukha Padma Kumar Challa (SPKumar) is a CSE student building a Rust password manager, exploring Linux systems, and researching neural networks.',
+    keywords: ['spkumar', 'spkumarchalla', 'spkchalla', 'spk challa', 'shanmukha challa', 'Rust', 'Linux', 'Systems Programming', 'Neural Networks'],
     authors: [{ name: 'S.P. Kumar Challa' }],
     openGraph: {
         title: 'S.P. Kumar Challa (SPKumar)',
@@ -25,7 +25,7 @@ export const metadata = {
                 url: '/og-image.png',
                 width: 1200,
                 height: 630,
-                alt: 'S.P. Kumar Challa Portfolio Overlay',
+                alt: 'S.P. Kumar Challa - Rust, Linux, Systems',
             },
         ],
         locale: 'en_US',
