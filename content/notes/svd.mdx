@@ -82,7 +82,13 @@ $$
 \sum_{j = 1}^{r}(A\cdot v_{i})^2 = \sum_{j = 1}^{r}\sigma_{i}^2(A)
 
 $$
-But $\sum_{j=1}^{n} \|a_j\|^2 = \sum_{j=1}^{n} \sum_{k=1}^{d} a_{jk}^2$
+But $\sum_{j=1}^{n} \|a_j\|^2 = \sum_{j=1}^{n} \sum_{k=1}^{d} a_{jk}^2$, the sum of squares of all the entries of $A$. Thus the sum of squares of the singular values of all the entries. There is an important norm associated with this quantity, the Frobenious norm of $A$, denoted as $||A||_{F}$ and defined as
+
+$$
+
+||A||_{F} = \sqrt{\sum_{j = 1}^{n} \sum_{k = 1}^{d} a_{jk}^2}
+
+$$
 
 ### Best rank-$k$ approximation
 ### Left singular vectors the $u_{i}$
