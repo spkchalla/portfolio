@@ -221,6 +221,15 @@
     color: var(--color-success, #519a66);
 }
 
+.prose .callout--note {
+    background: var(--color-bg-subtle);
+    border-color: var(--color-text-faint);
+}
+
+.prose .callout--note .callout-header {
+    color: var(--color-text-muted);
+}
+
 .prose .callout p:last-child {
     margin-bottom: 0;
 }

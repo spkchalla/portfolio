@@ -20,9 +20,19 @@ const Solution = ({ children }) => (
     </div>
 );
 
+const Note = ({ children, title = "Note" }) => (
+    <div className="callout callout--note">
+        <div className="callout-header">
+            <span aria-hidden="true">ℹ</span> {title}
+        </div>
+        {children}
+    </div>
+);
+
 export const mdxComponents = {
     Image: MDXImage,
     Mermaid: Mermaid,
     Problem,
     Solution,
+    Note,
 };

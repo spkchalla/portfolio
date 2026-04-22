@@ -1,0 +1,153 @@
+---
+title: "The Fundamental Theorem of Markov Chains"
+date: "2026-04-23"
+summary: "An article on the fundamental theorem of Markov Chains"
+tags: ["Markov Chains", "Information Theory", "Data Science"]
+---
+References: Foundations of Data Science by A.Blum, J.Hopcroft, and S.Saravanan
+
+## Stationary distribution
+
+Let $p(t)$ be the probability distribution at time $t$. Then
+
+$$ p(t+1) = p(t)P $$
+
+The long-term average probability distribution is given by
+
+$$
+\mathbf{a(t) = \frac{1}{t}(p(0) + p(1) + \dots + p(t-1))}
+$$
+
+### The fundamental Theorem of Markov Chains
+<Note title="Theorem 1.0">
+
+Let $P$ be a regular transition matrix of a finite state Markov chain. Then there exists a unique stationary distribution $\pi$ such that
+
+$$
+
+\pi P = \pi
+
+$$
+
+</Note>
+Before moving to the theorem's proof, we shall discuss an important lemma.
+<Note title="Lemma 1.1">
+ Let $P$ be the transition probability matrix for a connected Markov chain, then the $n x (n+1)$ matrix $A = [P-I,1]$ obtained by augmentating the matrix $P-I$ with an additional column of ones has rank $n$.
+</Note>
+### Proof: 
+We shall approach the proof by contradiction.
+
+By rank nullity theorem, if the rank of the matrix $A$ was less than $n$, say $n-1$, then the null space of $A$ would be atleast of 2 dimensions.
+
+By rank-nullity theorem, 
+$$
+
+\text{rank}(A) + \text{nullity}(A) = \text{no. of columns}(A)
+
+$$
+since the rank of $A$ is $n-1$, and the no. of columns in $A$ is $n+1$
+$$
+(n-1) + \text{nullity}(A) = n+1
+$$
+$$
+\text{nullity}(A) = 2
+$$
+This means that there are atleast 2 vectors in the null space of $A$.
+Let us find those vectors. We can obviously say that the vector $\mathbf{[1, 0]} = [1,1,\dots,1,0]^{T}$ is in the null space of $A$ since the rows of the matrix $P$ sums to 1 as it is a probability vector, and the $-I$ in the matrix $A$ is used to subtract 1 from each row, which makes the row-sum of $P-I$ to be 0, and the last column is 1. So, the product of $A$ and $\mathbf{[1, 0]}$ is 0.
+$$
+\left[
+\begin{array}{cccc|c}
+p_{11} - 1 & p_{12} & \cdots & p_{1n} & 1 \\
+p_{21} & p_{22} - 1 & \cdots & p_{2n} & 1 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+p_{n1} & p_{n2} & \cdots & p_{nn} - 1 & 1
+\end{array}
+\right]
+\begin{bmatrix}
+1 \\ 1 \\ \vdots \\ 1 \\ 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\ 0 \\ \vdots \\ 0
+\end{bmatrix}
+$$
+
+Since we are dones with one vector which belongs to the nullspace of the matrix $A$, we shall find the other vector. Let us say it is perpendicular to the vector $[1^{T},0^{T}]^{T}$, which we used earlier. We do this to show that there exist 2 independent vectors, that let you span atleast 2 dimensions, which was our assumption. Let us say it is $\mathbf{[x, \alpha]}^{T}$. 
+
+We definitely know that there will be some negative values in the vector $\mathbf{[x,\alpha]}^{T}$ since if that is perpendicular to the vector $\mathbf{[1,1,\dots,1,0]}^{T}$ then the dot product is 0, which will happen only if there are some negative values in the vector $\mathbf{[x,\alpha]}^{T}$. 
+
+if you multiply the matrix $A$ with the vector $\mathbf{[x, \alpha]}^{T}$ we get the following:
+
+$$
+\left[
+\begin{array}{cccc|c}
+p_{11} - 1 & p_{12} & \cdots & p_{1n} & 1 \\
+p_{21} & p_{22} - 1 & \cdots & p_{2n} & 1 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+p_{n1} & p_{n2} & \cdots & p_{nn} - 1 & 1
+\end{array}
+\right]
+\begin{bmatrix}
+x_1 \\ x_2 \\ \vdots \\ x_n \\ \alpha
+\end{bmatrix}
+=
+\begin{bmatrix}
+\vdots \\
+\sum_{j=1}^n p_{ij} x_j - x_i + \alpha \\
+\vdots
+\end{bmatrix}
+$$
+
+the extra $-x_i$ comes from the part where the diagonal matrix is subtracted from the matrix $P$. 
+From this, we can see that each $x_i$ is the convex combination of the values in the i-th row of the matrix $P$ plus $\alpha$. 
+
+<Note title="Convex Combination">
+Convex sum of some objects is defined as, 
+If there are $n$ objects $o_1, o_2, \dots, o_n$, then their convex combination is given by
+
+$$ \sum_{i=1}^n \alpha_i o_i $$
+
+where $\alpha_i \ge 0$ for all $i$ and $\sum_{i=1}^n \alpha_i = 1$.
+
+</Note>
+and here the $\alpha$s are none other than the values in the i-th row of the matrix $P$.
+
+Let $S$ be the set of all indices $i$ for which $x_i$ is having the maximum values. Let $\bar S$ be the set containing the minimal values. Connectedness of a markov chain implies that some $x_k$ of maximum values is adjacent to some $x_l$ of lower value. From this, we can say that
+$$
+x_k > \sum_{j=1}^n p_{kj} x_j.
+$$
+
+This is because the maximal value can never be less than or equal to the average (weighted sum / convex sum) of the nearby values. 
+
+This leads us to $\alpha$ being greater than 0 to be
+$$
+x_k = \sum_{j=1}^n p_{kj} x_j + \alpha
+$$
+
+If we turn the tables and do the same for the minimal values and see then it will be
+$$
+x_l < \sum_{j=1}^n p_{lj} x_j
+$$
+This leads us to $\alpha$ being less than 0.
+
+This is a contradiction due to our assumption of having 2 independent vectors in the null space of $A$, as we assumed the nullspace of the matrix $A$ to be of 2 dimensions as we assumed the rank of $A$ to be $n-1$.
+
+Hence, we can say that the rank of the matrix $A$ is $n$.
+
+---
+
+Let us come back to the Theorem, 
+
+<Note title="Theorem 1.0">
+
+Let $P$ be a regular transition matrix of a finite state Markov chain. Then there exists a unique stationary distribution $\pi$ such that
+
+$$
+
+\pi P = \pi
+
+$$
+
+</Note>
+
+To be continued... `Now the time is ${new Date().toISOString()}`. Sorry, I am too sleepy.

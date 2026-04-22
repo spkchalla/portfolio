@@ -1,0 +1,34 @@
+---
+title: "Testing the Note Component"
+date: "2026-04-23"
+summary: "A test article to verify the custom Note component and LaTeX support."
+---
+
+# Testing Note Component
+
+This is a test to ensure the reusable `<Note>` component works as expected.
+
+<Note>
+  This is a reusable note component. 
+  It supports **markdown** and inline math: $E = mc^2$.
+</Note>
+
+<Note title="Theorem: Fundamental Theorem of Calculus">
+  If $f$ is continuous on $[a, b]$, then the function $F$ defined by
+  $$F(x) = \int_a^x f(t) \, dt$$
+  is continuous on $[a, b]$ and differentiable on $(a, b)$, and $F'(x) = f(x)$.
+</Note>
+
+## Standard Math Blocks
+
+Ensure existing math blocks still work:
+
+$$
+\mathcal{P}(A | B) = \frac{\mathcal{P}(B | A) \mathcal{P}(A)}{\mathcal{P}(B)}
+$$
+
+Another note:
+
+<Note title="Pro Tip">
+  Don't forget to check the console for any hydration errors.
+</Note>
