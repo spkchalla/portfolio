@@ -1,10 +1,12 @@
 ---
-title: "The Fundamental Theorem of Markov Chains"
+title: "The Fundamental Theorem of Markov Chains (Proof, Intuition + Uniqueness)"
 date: "2026-04-23"
-summary: "An article on the fundamental theorem of Markov Chains"
-tags: ["Markov Chains", "Information Theory", "Data Science"]
+summary: "Explore the Fundamental Theorem of Markov Chains with a rigorous proof of stationary distribution existence and uniqueness using linear algebra and convex combinations."
+tags: ["Markov Chains", "Information Theory", "Data Science", "Linear Algebra", "Probability", "Stationary Distribution"]
 ---
 References: Foundations of Data Science by A.Blum, J.Hopcroft, and S.Saravanan
+
+This article explains the fundamental theorem of Markov chains, including the existence and uniqueness of stationary distributions. We walk through the formal proof using linear algebra concepts such as rank, null space, and convex combinations.
 
 ## Stationary distribution
 
@@ -32,7 +34,7 @@ $$
 </Note>
 Before moving to the theorem's proof, we shall discuss an important lemma.
 <Note title="Lemma 1.1">
- Let $P$ be the transition probability matrix for a connected Markov chain, then the $n x (n+1)$ matrix $A = [P-I,1]$ obtained by augmentating the matrix $P-I$ with an additional column of ones has rank $n$.
+ Let $P$ be the transition probability matrix for a connected Markov chain, then the $n x (n+1)$ matrix $A = [P-I,1]$ obtained by augmenting the matrix $P-I$ with an additional column of ones has rank $n$.
 </Note>
 ### Proof: 
 We shall approach the proof by contradiction.
@@ -146,7 +148,7 @@ Let $P$ be a regular transition matrix of a finite state Markov chain. Then ther
 
 Here we need to note that $\mathbf{a(t)}$ is the long-term average probability distribution, not the probability distribution at time $t$. 
 
-Let us run one step of the Markov chain starting with distribution $\mathbf{a(t)}$: the distriburiton oafter the step is $\mathbf{a(t+1)}$. Let us calculate teh change in probabilities due to this step.
+Let us run one step of the Markov chain starting with distribution $\mathbf{a(t)}$: the distriburiton after the step is $\mathbf{a(t+1)}$. Let us calculate the change in probabilities due to this step.
 
 $$
 \begin{aligned}
