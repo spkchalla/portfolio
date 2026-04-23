@@ -140,14 +140,25 @@ Let us come back to the Theorem,
 
 <Note title="Theorem 1.0">
 
-Let $P$ be a regular transition matrix of a finite state Markov chain. Then there exists a unique stationary distribution $\pi$ such that
-
-$$
-
-\pi P = \pi
-
-$$
+Let $P$ be a regular transition matrix of a finite state Markov chain. Then there exists a unique stationary distribution $\pi$ such that $\pi P = \pi$. Moreover, for any starting distribution, $\lim_{t \to \infty} a(t) = \pi$.
 
 </Note>
 
-To be continued... `Now the time is 1:26 AM`. Sorry, I am too sleepy.
+Here we need to note that $\mathbf{a(t)}$ is the long-term average probability distribution, not the probability distribution at time $t$. 
+
+Let us run one step of the Markov chain starting with distribution $\mathbf{a(t)}$: the distriburiton oafter the step is $\mathbf{a(t+1)}$. Let us calculate teh change in probabilities due to this step.
+
+$$
+\begin{aligned}
+a(t)P - a(t)
+&= \frac{1}{t}\big[p(0)P + p(1)P + \cdots + p(t-1)P\big]
+- \frac{1}{t}\big[p(0) + p(1) + \cdots + p(t-1)\big] \\
+&= \frac{1}{t}\big[p(1) + p(2) + \cdots + p(t)\big]
+- \frac{1}{t}\big[p(0) + p(1) + \cdots + p(t-1)\big] \\
+&= \frac{1}{t}\big(p(t) - p(0)\big).
+\end{aligned}
+$$
+
+Thus $\mathbf{b(t)} = a(t)P - a(t)$ is the difference between the average distribution after $t$ steps and the average distribution after $t+1$ steps. It satisfies $\mathbf{|b(t)|} \le \frac{2}{t}$ for all $t \ge 1 \to 0$ as $t \to \infty$, due to the triangular law of vector addtion.
+
+By lemma 1.1, we know that the rank of the matrix $A = [P-I,1]$ is $n$.    
