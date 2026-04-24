@@ -1,0 +1,45 @@
+---
+title: "Markov Chain Monte Carlo (MCMC)"
+date: "2026-04-25"
+summary: "Markov Chain Monte Carlo (MCMC) Explained with Proof and Intuition."
+tags: ["Markov Chains", "Information Theory", "Data Science"]
+---
+
+{/*The story part*/}
+{/* My story by my hand:
+There is a spy who is incharge of a given arms smuggling criminal. He not just wanted to catch him, but also wanted to figure out a way to know where he shall be after some time he travels. So he started to maintain a dairy of his movements. The criminal had a lot of connections and is travelling non-stop. He goes there, delivers the arms, collects the money and leaves for the next destination. He travels all around the country. So, the spy started keeping track of his probability of being at a city after travelling some $n$ cities. This made him to keep each page for each movement he made to a new city. He shall store all the probabilities of what probability is he going to be in a city $k$ after travelling $t$ many cities. The $t$ represents the $t^{th}$ page after travelling $t$ many cities. He also knew what is the probability of him moving from one city to the other, as he also plotted the matrix of him moving from one city to the other. The spy tracked long enough so that he completely understood the situation of criminal being at a given city after travelling $t$ many cities. This is due to the fact that the criminal is travelling in a markov chain.
+*/}
+
+## The crime story of a Mathematical Smuggler
+
+A seasoned intelligence operative was assigned a difficult mission: track an arms smuggler who never stayed in one place long enough to be caught. The smuggler moved relentlessly across cities, completing deals and vanishing before anyone could react. Following him directly was impossible.
+
+So the operative chose a different approach. Instead of chasing the smuggler, he decided to understand his movement.
+
+He began keeping a diary.
+
+Each page of the diary represented a step in the smuggler’s journey. On the $t^{th}$ page, he wrote down a vector that captured his belief about the smuggler’s location. For every city $k$, he recorded the probability that the smuggler would be there after $t$ moves. At the beginning, these probabilities were uncertain and scattered.
+
+However, the operative had one powerful piece of information. Through intelligence reports, he had determined how the smuggler moved between cities. He represented this behavior as a matrix $P$, where each entry $P_{ij}$ described the probability of traveling from city $i$ to city $j$.
+
+With this, the diary became more than just notes. It became a system.
+
+If the probabilities on page $t$ were given by $x_t$, then the next page followed a precise rule:
+$$
+x_{t+1} = x_t P
+$$
+
+Each new page was obtained by applying the same transition matrix. The operative did not need to guess anymore. He could compute how his belief evolved over time.
+
+As the pages filled, something interesting happened. The probabilities began to settle. The changes between consecutive pages became smaller and smaller. Eventually, the distribution reached a stable form that barely changed with further updates.
+
+The operative understood what this meant.
+
+The smuggler’s movement was not arbitrary. It followed a Markov chain, where each step depended only on the current city. Because of this structure, repeated application of the transition matrix revealed a long-term pattern.
+
+The diary no longer just described where the smuggler might be next. It revealed where he was most likely to be found in the long run.
+
+
+
+{/*The math part*/}
+
