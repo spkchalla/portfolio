@@ -43,3 +43,84 @@ The diary no longer just described where the smuggler might be next. It revealed
 
 {/*The math part*/}
 
+Let us now look at the actual math behind it. Let us build the math analogously to the above said story.
+
+## Markov Chain Monte Carlo
+
+Each state in a markov chain is a city the smuggler goes to. The amount he receives at each city is the value of the state, i.e., $\mathbf{f(x_i)}$.
+
+Let $x_i$ be the $i^{th}$ state, and $f(x_i)$ be the value of the $i^{th}$ state. The intelligence reports are nothing but the transition probabilities between the states. Let $P_{ij}$ be the probability of moving from state $i$ to state $j$. Not to mention, but the whole skill is hidden in figuring out the transition probabilities, and luckily, there are some methods to do that, such as Metropolis-Hastings algorithm, Gibbs sampling, etc. 
+
+Let us get into why we do this kind of Markov Chain Monte Carlo. 
+
+Let us say there is a function 
+$$
+
+f: \mathbb{R}^d \to \mathbb{R}
+$$
+
+We want to find the expected value of the function. Practically, if we see, even if the values each co-ordinate in the d-dimensions take 2 values, it becomes atleast $2^d$ possible values. That is a very very huge space. So, instead of doing the 
+$$
+\mathbb{E}[f(x)] = \sum_{x} f(x) p(x)
+$$
+
+We can approximate it as 
+$$
+\mathbb{E}[f(x)] \approx \frac{1}{n} \sum_{i=1}^{n} f(x_i)
+$$
+
+where $x_i$ are sampled from $p(x)$. We now have some issues.
+
+1. We don't know how to sample from $p(x)$.
+2. We don't know how many to sample from $p(x)$ to get a good approximation.
+3. How can we use Markov Chains in this scenario?
+
+To answer them, we shall see how the markov chain works in this scenario.
+
+We need to build a markov chain such that it behaves like we sampled from $p(x)$. So, we keep some $n$ no. of states, and then assign them a target probability $p(x_i)$, where $\sum_{i=1}^{n} p(x_i) = 1$. We are not completed here. We also need to define a transition probability martix, such that the walk converges to the target distribution. 
+
+We have just answered the first and third question. 
+
+To answer the second question, we can say, walk long enough that you reach a stationary probability that is close enough to the target probability. 
+
+So, to design the heart of the walk, i.e., the transition probability matrix, we need to use the afformentioned techniques such as Metropolis-Hastings algorithm, Gibbs sampling, etc. 
+
+Some math to get ourselves dirty to understand what we are doing actually by using markov chain method before going into the Metropolis-Hastings algorithm.
+
+To estimate 
+
+$$
+\mathbb{E}[f(x)] = \sum_{i=1}^n f(x_i) p(x_i)
+$$
+
+we shall estimate it by averaging some samples, which is 
+
+$$
+\mathbb{E}[f(x)] \approx \frac{1}{n} \sum_{i=1}^n f(x_i)
+$$
+
+we shall recall that $\mathbf{p(t)}$ is the probability distribution of being at a vertex at time $t$. So, $\mathbf{p(t)}$ contains as many components as the number of vertices in the graph. The long term t-step average is 
+$$
+\mathbf{a(t) = \frac{1}{t}[p(0) + p(1) + \dots + p(t-1)]}
+$$
+
+The expected value of function is 
+$$
+\mathbb{E}[f(x)] = \sum_{i} f(x_i) p(x_i)
+$$
+where, $f_{i}$ is the value of the function at the $i^{th}$ state and this is equivalent to the sampling by walking long enough. Let us say this estimate as $\gamma$. We shall replace the probability $p_{i}$ with the average probability $a_{i}$. 
+
+$$
+\mathbb{E}[f(x)] = \sum_{i} f_{i} a_{i}(t)
+$$
+
+where $a_{i}(t)$ is the average probability of being at the $i^{th}$ state at time $t$. 
+
+When we expand this, we get
+
+$$
+\mathbb{E}[\gamma] = \sum_i f_i \left( \frac{1}{t} \sum_{j=1}^{t} \mathrm{Prob}(\text{walk is in state } i \text{ at time } j) \right) = \sum_i f_i a_i(t).
+$$
+
+### Metropolis-Hastings Algorithm
+
