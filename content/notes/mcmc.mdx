@@ -124,3 +124,39 @@ $$
 
 ### Metropolis-Hastings Algorithm
 
+This algorithm says, if you are wanting to get a target distribution $\mathbf{p(x)}$, then you can start with a bunch of states, with each being a lattice point, that is 
+$$
+\begin{tikzpicture}[scale=0.9]
+
+% Axes (kept neutral so they remain visible)
+\draw[->, thick] (-0.5,0) -- (6.5,0);
+\draw[->, thick] (0,-0.5) -- (0,6.5);
+
+% Axis labels placed OUTSIDE the graph
+\node[white] at (6.8,-0.2) {$x_1$};
+\node[white] at (-0.2,6.8) {$x_2$};
+
+% Grid (mesh)
+\draw[step=1, gray!40, thin] (0,0) grid (6,6);
+
+% Lattice points
+\foreach \x in {0,...,6} {
+  \foreach \y in {0,...,6} {
+    \fill[black] (\x,\y) circle (2pt);
+  }
+}
+
+% Highlight one lattice point
+\fill[black] (4,3) circle (3pt);
+
+% Curved arrow coming from OUTSIDE with label placed in the periphery
+\draw[->, thick]
+  (7,5.5) to[out=200,in=45]
+  (4,3);
+
+\node[white, align=left] at (7.2,5.7)
+{lattice point\\$(x_1, x_2)$};
+
+\end{tikzpicture}
+$$
+each point in the d-dimensions where the oint is from $(x_1, x_2, \dots, x_i, \dots, x_d)$ where $x_i \in \mathbb{N}$.

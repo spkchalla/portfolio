@@ -80,6 +80,8 @@ export default function RootLayout({ children }) {
                     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
                     rel="stylesheet"
                 />
+                <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css" />
+                <script src="https://tikzjax.com/v1/tikzjax.js" async />
                 <script dangerouslySetInnerHTML={{ __html: themeScript }} />
             </head>
             <body suppressHydrationWarning>

@@ -1,4 +1,5 @@
 import Mermaid from './Mermaid';
+import TikZ from './TikZ';
 
 import { MDXImage } from './MDXImage';
 
@@ -32,6 +33,7 @@ const Note = ({ children, title = "Note" }) => (
 export const mdxComponents = {
     Image: MDXImage,
     Mermaid: Mermaid,
+    TikZ: TikZ,
     Problem,
     Solution,
     Note,
