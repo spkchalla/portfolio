@@ -161,7 +161,27 @@ $$
 $$
 each point in the d-dimensions where the oint is from $(x_1, x_2, \dots, x_i, \dots, x_d)$ where $x_i \in \mathbb{N}$.
 
+Each point has $2d$ co-ordinate edges. But let it is not always that there will be those many neighbours, sometimes, in markov chains, we may have only $r$ no. of edges connected to a vertex. So, let $r$ be the maximum degree a state has in that graph. So, we usually can think, there is at max $\frac{1}{r}$ possibility to move from one vertex to another, but $r$ is the maximum no. of egdes one vertex can have. So, there might be some vertices with less than $r$ edges, which means there is a possibility that we might not move to any vertex from that vertex. So, to go to a vertex $j$ from $i$, we can move to $j$ if $p_{j} \ge p_{i}$. If $p_{j} < p_{i}$, then we can move to $j$ with probability $\frac{p_{j}}{p_{i}}$ and with probability $1 - \frac{p_{j}}{p_{i}}$ we stay at the current vertex $i$. This shows us that, this movement favours the states that have the high probability. Hence this walk ensures that we stay in the high probability states for a long time, which resembles the target distribution.
 
+For $i$ adjacent to $j$ in the graph $G$,
+$$
+\mathbf{p_{ij} = \frac{1}{r} \min\left(1, \frac{p_j}{p_i}\right)}
+$$
 
-
-to be continued. I am writing this at 12:40 am.
+where $r$ is the maximum degree of any vertex in the graph $G$, and
+$$
+\mathbf{p_{ii} = 1 - \sum_{j \neq i} p_{ij}}
+$$
+Thus, 
+$$
+p_{i}p_{ij} = \frac{p_{i}}{r} \min\left(1, \frac{p_{j}}{p_{i}}\right) = \frac{1}{r} \min\left(p_{i}, p_{j}\right)
+$$
+and
+$$
+p_{j}p_{ji} = \frac{p_{j}}{r} \min\left(1, \frac{p_{i}}{p_{j}}\right) = \frac{1}{r} \min\left(p_{j}, p_{i}\right)
+$$
+Thus, we have 
+$$
+p_{i}p_{ij} = p_{j}p_{ji}
+$$
+This is called the detailed balance condition.
