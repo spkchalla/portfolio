@@ -31,7 +31,9 @@ export default function SideQuestsPage() {
                     return (
                         <ScrollReveal key={quest.slug} animation="fade-up" delay={i * 50}>
                             <a
-                                href={`/side-quests/${quest.slug}`}
+                                href={quest.href || quest.github || `/side-quests/${quest.slug}`}
+                                target={(quest.href || quest.github) ? "_blank" : undefined}
+                                rel={(quest.href || quest.github) ? "noopener noreferrer" : undefined}
                                 className={`card ${styles.card}`}
                             >
                                 <div className={styles.cardHeader}>
