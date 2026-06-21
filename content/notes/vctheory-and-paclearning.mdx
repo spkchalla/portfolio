@@ -1,0 +1,69 @@
+---
+title: "VC Theory and PAC Learning"
+date: "2026-06-21"
+tags: ["Machine Learning", "VC Theory", "PAC Learning"]
+summary: "An introduction to VC theory and PAC learning, including the foundations of statistical learning theory."
+---
+## Learning from Samples
+
+The goal of learning from samples is to learn an unknown function $f$ from as few samples as possible. We receive inputs $x$ drawn i.i.d. from a distribution and query the oracle (a black box). The oracle outputs the value $f(x)$. From these input-output pairs, we want to reconstruct or approximately learn the function.
+
+Let us take a specific example and learn a toy function under specific conditions.
+
+Suppose $\mathcal{X}$ is a finite domain, the inputs are drawn uniformly from $\mathcal{X}$, and $f : \mathcal{X} \to \{-1,+1\}$. We are promised that $f$ is either constant on the entire domain or assigns each label to exactly half of the domain. That is, either
+
+$$
+\begin{aligned}
+\text{A.}\quad &\exists c \in \{-1,+1\} \quad \text{such that} \quad
+                  f(x)=c \quad \forall x \in \mathcal{X},
+\\[4pt]
+&\text{or}
+\\[4pt]
+\text{B.}\quad &\left|f^{-1}(-1)\right|
+                  = \left|f^{-1}(+1)\right|
+                  = \frac{|\mathcal{X}|}{2}.
+\end{aligned}
+$$
+
+Now, we have two options, and I need to figure out which kind of function the oracle represents. I draw samples and look at their outputs. The outputs may be different, or they may all be the same. If I observe both $+1$ and $-1$, I can immediately say that the function is balanced because of the promise. If all the outputs are the same, however, I cannot be certain. My learning rule will declare the function constant in that case, so all I can talk about is the probability that this decision is wrong.
+
+For example, let us say that I have drawn three samples and all are in the $+1$ class. Can I say that the function is constant? No. A balanced function could also produce those three outputs. Nor can I say for sure that it is balanced and that drawing more samples will reveal this. My whole issue is to figure out how many samples I need before making a decision, so I must choose that number in advance.
+
+Then comes the idea of probability. If the function is balanced, each draw has probability $1/2$ of producing either label. Therefore, the probability that three draws are all $+1$ is
+
+$$
+\left(\frac{1}{2}\right)^3 = \frac{1}{8}.
+$$
+
+The same is true for three outputs that are all $-1$. Thus, the probability that all three outputs are the same, causing my learning rule to mistake a balanced function for a constant one, is
+
+$$
+2\left(\frac{1}{2}\right)^3 = \frac{2}{8} = \frac{1}{4}.
+$$
+
+So, now comes the big question: how much risk of being fooled by the sampled observations can I afford? I shall call this limit $\delta$, where $0 < \delta < 1$.
+
+If I draw $n$ samples, the probability that a balanced function produces only one label is
+
+$$
+2\left(\frac{1}{2}\right)^n = 2^{1-n}.
+$$
+
+Therefore, I will choose enough samples that
+
+$$
+2^{1-n} \leq \delta.
+$$
+
+This makes sure that the probability of my learning rule being fooled by the sampled observations is at most $\delta$.
+
+Equivalently, I need
+
+$$
+n \geq 1 + \log_2\left(\frac{1}{\delta}\right).
+$$
+
+Since the number of samples must be an integer, the smallest such choice is $n = \left\lceil 1 + \log_2(1/\delta) \right\rceil$.
+
+We can distinguish between case A and case B with probability atleast $1-\delta$ using $O(log\frac{1}{8})$ queries. $\delta$ $\ge 0$ under finite no. of samples.
+
