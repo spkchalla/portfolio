@@ -67,3 +67,25 @@ Since the number of samples must be an integer, the smallest such choice is $n =
 
 We can distinguish between case A and case B with probability atleast $1-\delta$ using $O(log\frac{1}{8})$ queries. $\delta$ $\ge 0$ under finite no. of samples.
 
+## Goals in Learning Theory
+
+Given a function $f : \mathbb{X} \to \mathbb{R}$, and knowing that $f \in \mathcal{F}$, where $\mathcal{F}$ is a set of structured functions, we want to **learn** $f$ using as few queries as possible to the black box, with a success probability of at least $(1-\delta)$.
+
+Ideally, we want to learn $f$ exactly, but that is quite hard to achieve.
+
+Here, **learning** means that, with probability at least $1-\delta$ over the sampled observations, your algorithm will output some $\tilde{f} \in \mathcal{F}$ such that
+$$
+\mathbb{P}_{x}(\tilde{f}(x) \neq f(x)) \leq \epsilon.
+$$
+
+This is called $(\epsilon, \delta)$-PAC learning. We need to figure out $\tilde{f}$. For this, we need to know the sample complexity. Sample complexity is denoted by
+$$
+\mathcal{s}(\epsilon, \delta)
+$$
+which is the number of i.i.d. samples from $\mathbb{X}$ I need to learn $f$ with these guarantees. If the sample complexity is higher, then the function class is harder to learn.
+
+## Radon's Theorem
+
+The theorem is referred from convex geometry.
+
+Let $P_{1},P_{2},P_{3} \dots P_{N},P_{N+1},P_{N+2}$ be points in $\mathbb{R}^{N}$. Then $\exists$ two partitions $S_{1}$ and $S_{2}$ of the aove points such that $S_{1}$ and $S_{2}$ of the above points **cannot be separated by a linear classifier**.
