@@ -148,4 +148,63 @@ $$
 $$
 
 Let us say $P_1$ is origin and $v_i = P_{i+1} - P_1 , \forall i \in [N+1]$
+Since
+---
 $$
+\sum_{i=1}^{N+2}\lambda_i=0,
+$$
+there must exist both positive and negative coefficients (otherwise all the coefficients would have to be zero).
+
+Define
+$$
+L^-=\{\,i\mid \lambda_i<0\,\},
+\qquad
+L^+=\{\,i\mid \lambda_i>0\,\}.
+$$
+
+Now partition the given points into
+$$
+S_1=\{P_i\mid i\in L^-\},
+\qquad
+S_2=\{P_j\mid j\in L^+\}.
+$$
+
+Using
+$$
+\sum_{i=1}^{N+2}\lambda_iP_i=0,
+$$
+we obtain
+$$
+\sum_{i\in L^+}\lambda_iP_i
+=
+\sum_{j\in L^-}(-\lambda_j)P_j.
+$$
+
+Let
+$$
+\alpha
+=
+\sum_{i\in L^+}\lambda_i
+=
+\sum_{j\in L^-}(-\lambda_j),
+$$
+where the equality follows from
+$$
+\sum_{i=1}^{N+2}\lambda_i=0.
+$$
+
+Dividing both sides by $\alpha$, we get
+$$
+\sum_{i\in L^+}\frac{\lambda_i}{\alpha}P_i
+=
+\sum_{j\in L^-}\frac{-\lambda_j}{\alpha}P_j.
+$$
+
+Notice that all the coefficients on both sides are non-negative and sum to $1$. Hence, both sides represent convex combinations of points in $S_1$ and $S_2$, respectively.
+
+Therefore, there exists a point that belongs to both convex hulls. Hence,
+$$
+\operatorname{conv}(S_1)\cap\operatorname{conv}(S_2)\neq\varnothing.
+$$
+
+Since two sets whose convex hulls intersect cannot be separated by a linear hyperplane, the partitions $S_1$ and $S_2$ cannot be separated by a linear classifier.
