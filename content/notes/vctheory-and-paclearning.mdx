@@ -95,11 +95,34 @@ $$
 $$
 where $\bar x = (\bar x_1, \bar x_2, \dots, \bar x_N)$ and $\bar y = (\bar y_1, \bar y_2, \dots, \bar y_N)$
 ### Affine functions over $\mathbb{R}^{N}$
-An affine function $\mathcal{f_{\bar a, \bar b}}(\bar x)$ is defined as 
+An affine function $\mathcal{f_{\bar a, b}}(\bar x)$ is defined as 
 $$
-\mathcal{f_{\bar a, \bar b}}(\bar x) = \langle \bar a, \bar x \rangle + \bar b
+\mathcal{f_{\bar a, b}}(\bar x) = \langle \bar a, \bar x \rangle + b
 $$
-where $\bar a \in \mathbb{R^{N}} \quad \& \quad \bar b \in \mathbb{R}$
+where $\bar a \in \mathbb{R^{N}} \quad \& \quad b \in \mathbb{R}$
+### Linear Hyperplanes
+
+An affine function assigns a real value to every point in $\mathbb{R}^N$. A natural question to ask is: **what is the set of points that receive the same value under this function?** In particular, the set of points where the affine function evaluates to zero forms a geometric object known as a **hyperplane**.
+
+Given an affine function
+$$
+\mathcal{f}_{\bar a,b}(\bar x)=\langle \bar a,\bar x\rangle+b,
+$$
+the **hyperplane** induced by this affine function is the set of all points whose function value is zero. Formally,
+$$
+H=\left\{\bar x\in\mathbb{R}^N:\langle \bar a,\bar x\rangle+b=0\right\}.
+$$
+
+The hyperplane partitions the space into two half-spaces:
+$$
+\langle \bar a,\bar x\rangle+b>0
+$$
+and
+$$
+\langle \bar a,\bar x\rangle+b<0.
+$$
+
+Thus, every point in $\mathbb{R}^N$ either lies on the hyperplane or belongs to one of the two half-spaces.
 ## Radon's Theorem
 
 The theorem is referred from convex geometry.
