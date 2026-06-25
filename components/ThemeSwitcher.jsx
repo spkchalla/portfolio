@@ -1,10 +1,14 @@
 'use client';
 
-import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+
+const THEME_RETURN_PATH_KEY = 'themeReturnPath';
 
 export default function ThemeSwitcher() {
     const [activeTheme, setActiveTheme] = useState('dark');
+    const pathname = usePathname();
+    const router = useRouter();
 
     useEffect(() => {
         const theme = document.documentElement.getAttribute('data-theme') || 'dark';
@@ -29,11 +33,28 @@ export default function ThemeSwitcher() {
         }
     };
 
+    const openOrCloseThemes = () => {
+        if (pathname === '/themes') {
+            const returnPath = sessionStorage.getItem(THEME_RETURN_PATH_KEY) || '/';
+            sessionStorage.removeItem(THEME_RETURN_PATH_KEY);
+            router.push(returnPath);
+            return;
+        }
+
+        const currentPath = `${window.location.pathname}${window.location.search}`;
+        sessionStorage.setItem(THEME_RETURN_PATH_KEY, currentPath || '/');
+        router.push('/themes');
+    };
+
+    const isThemesPage = pathname === '/themes';
+
     return (
-        <Link
-            href="/themes"
+        <button
+            type="button"
+            onClick={openOrCloseThemes}
             className="theme-switcher-fab"
-            title="Select Theme"
+            title={isThemesPage ? 'Return to previous page' : 'Select Theme'}
+            aria-label={isThemesPage ? 'Return to previous page' : 'Select Theme'}
             style={{
                 position: 'fixed',
                 bottom: 'var(--space-8)',
@@ -47,6 +68,7 @@ export default function ThemeSwitcher() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 zIndex: 1000,
+                padding: 0,
                 boxShadow: 'var(--shadow-md)',
                 transition: 'all var(--duration-normal) var(--ease-premium)',
                 cursor: 'pointer'
@@ -62,12 +84,20 @@ export default function ThemeSwitcher() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
             >
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                {isThemesPage ? (
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                ) : (
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                )}
             </svg>
             <style jsx>{`
         .theme-switcher-fab:hover {
           transform: scale(1.1) rotate(5deg);
           box-shadow: 0 0 20px ${getThemeColor()}80;
+        }
+        .theme-switcher-fab:focus-visible {
+          outline: 3px solid ${getThemeColor()}66;
+          outline-offset: 3px;
         }
         @media (max-width: 768px) {
           .theme-switcher-fab {
@@ -76,6 +106,6 @@ export default function ThemeSwitcher() {
           }
         }
       `}</style>
-        </Link>
+        </button>
     );
 }

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="560" viewBox="0 0 880 560" role="img" aria-labelledby="title desc">
+  <title id="title">Projection of a set system onto a subset</title>
+  <desc id="desc">A universe X contains five circular ranges. A red curve Y intersects those ranges, and the intersections are shown with differently angled hatch marks.</desc>
+  <defs>
+    <clipPath id="curveYClip">
+      <path d="M264 224 C282 160 422 152 572 176 C634 200 598 304 546 376 C440 392 299 360 264 224 Z" />
+    </clipPath>
+    <clipPath id="circle1Clip"><circle cx="308" cy="240" r="96" /></clipPath>
+    <clipPath id="circle2Clip"><circle cx="440" cy="240" r="96" /></clipPath>
+    <clipPath id="circle3Clip"><circle cx="572" cy="240" r="96" /></clipPath>
+    <clipPath id="circle4Clip"><circle cx="374" cy="328" r="96" /></clipPath>
+    <clipPath id="circle5Clip"><circle cx="506" cy="328" r="96" /></clipPath>
+
+    <pattern id="hatchBlue" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#1d4ed8" stroke-width="2" />
+    </pattern>
+    <pattern id="hatchOrange" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#c2410c" stroke-width="2" />
+    </pattern>
+    <pattern id="hatchViolet" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(60)">
+      <line x1="0" y1="0" x2="0" y2="16" stroke="#7e22ce" stroke-width="2" />
+    </pattern>
+    <pattern id="hatchCyan" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-30)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#0891b2" stroke-width="2" />
+    </pattern>
+    <pattern id="hatchGreen" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#15803d" stroke-width="2" />
+    </pattern>
+  </defs>
+
+  <rect x="40" y="24" width="800" height="512" fill="#ffffff" stroke="#111827" stroke-width="2.5" />
+  <text x="58" y="64" fill="#111827" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-style="italic">X</text>
+
+  <g clip-path="url(#curveYClip)">
+    <g clip-path="url(#circle1Clip)">
+      <rect x="40" y="24" width="800" height="512" fill="url(#hatchBlue)" />
+    </g>
+    <g clip-path="url(#circle2Clip)">
+      <rect x="40" y="24" width="800" height="512" fill="url(#hatchOrange)" />
+    </g>
+    <g clip-path="url(#circle3Clip)">
+      <rect x="40" y="24" width="800" height="512" fill="url(#hatchViolet)" />
+    </g>
+    <g clip-path="url(#circle4Clip)">
+      <rect x="40" y="24" width="800" height="512" fill="url(#hatchCyan)" />
+    </g>
+    <g clip-path="url(#circle5Clip)">
+      <rect x="40" y="24" width="800" height="512" fill="url(#hatchGreen)" />
+    </g>
+  </g>
+
+  <circle cx="308" cy="240" r="96" fill="none" stroke="#111827" stroke-width="1.5" />
+  <circle cx="440" cy="240" r="96" fill="none" stroke="#111827" stroke-width="1.5" />
+  <circle cx="572" cy="240" r="96" fill="none" stroke="#111827" stroke-width="1.5" />
+  <circle cx="374" cy="328" r="96" fill="none" stroke="#111827" stroke-width="1.5" />
+  <circle cx="506" cy="328" r="96" fill="none" stroke="#111827" stroke-width="1.5" />
+
+  <path d="M264 224 C282 160 422 152 572 176 C634 200 598 304 546 376 C440 392 299 360 264 224 Z" fill="none" stroke="#dc2626" stroke-width="4" />
+
+  <g transform="translate(594 432)">
+    <rect x="0" y="0" width="210" height="84" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5" />
+    <text x="16" y="25" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">Legend:</text>
+    <circle cx="34" cy="48" r="10" fill="none" stroke="#111827" stroke-width="1.5" />
+    <text x="58" y="53" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="14">Circles subset X</text>
+    <line x1="18" y1="70" x2="50" y2="70" stroke="#dc2626" stroke-width="4" />
+    <text x="58" y="75" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="14">Curve Y</text>
+  </g>
+</svg>
