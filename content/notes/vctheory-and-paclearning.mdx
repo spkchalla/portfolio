@@ -208,3 +208,25 @@ $$
 $$
 
 Since two sets whose convex hulls intersect cannot be separated by a linear hyperplane, the partitions $S_1$ and $S_2$ cannot be separated by a linear classifier.
+
+## VC Theory
+
+VC Theory is one of the foundational theories in learning.
+
+(As of now, I am very new to this and cannot appreciate VC Theory correctly, but soon I shall rephrase the VC Theory).
+
+Let us introduce the Universe and Ranges.
+
+We denote Universe with '$\mathbb{X}$' and Ranges with '$\mathcal{R}$'.
+$$
+(\mathbb{X},\mathcal{R})
+$$
+where, $\mathcal{R} \subseteq 2^{\mathbb{X}}$. $\mathcal{R}$ is the collection of subsets of the universe. This tuple together is called a **set system**.
+
+### Projection
+
+Given that $\mathbb{Y} \subseteq \mathbb{X}$, projection $(\mathbb{Y}, \mathcal{R_{\mathbb{Y}}})$ is defined as the following:
+$$
+\mathcal{R_{\mathbb{Y}}} = \{\mathcal{S} \cap \mathbb{Y} | \mathcal{S}\in \mathcal{R}\}
+$$
+given that $\mathcal{R_{\mathbb{Y}}} \subseteq 2^{\mathbb{Y}}$.
