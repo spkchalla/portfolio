@@ -38,6 +38,7 @@ export function MDXImage({
                 sizes={sizes}
                 src={src}
                 width={resolvedWidth}
+                style={{ maxWidth: width ? `${width}px` : '100%', height: 'auto', ...props.style }}
                 {...props}
             />
             {(caption || alt) && <figcaption className={styles.caption}>{caption || alt}</figcaption>}

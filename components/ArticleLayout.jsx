@@ -1,8 +1,25 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import katex from 'katex';
 import ReadingProgress from './ReadingProgress';
 import styles from './ArticleLayout.module.css';
+
+function renderLatexText(text) {
+    if (!text.includes('$')) return text;
+    const parts = text.split(/(\$.*?\$)/g);
+    return parts.map((part, i) => {
+        if (part.startsWith('$') && part.endsWith('$')) {
+            const math = part.slice(1, -1);
+            try {
+                return <span key={i} dangerouslySetInnerHTML={{ __html: katex.renderToString(math, { throwOnError: false }) }} />;
+            } catch (e) {
+                return <span key={i}>{part}</span>;
+            }
+        }
+        return <span key={i}>{part}</span>;
+    });
+}
 
 function TableOfContents({ headings }) {
     const [active, setActive] = useState('');
@@ -37,7 +54,7 @@ function TableOfContents({ headings }) {
                             href={`#${h.id}`}
                             className={`${styles.tocLink} ${active === h.id ? styles.tocActive : ''}`}
                         >
-                            {h.text}
+                            {renderLatexText(h.text)}
                         </a>
                     </li>
                 ))}
