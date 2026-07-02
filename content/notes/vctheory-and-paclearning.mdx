@@ -246,3 +246,59 @@ given that $\mathcal{R_{\mathbb{Y}}} \subseteq 2^{\mathbb{Y}}$.
   caption="The projection keeps only the parts of each range that intersect the subset Y."
 />
 Geometrically, the projection is obtained by restricting every range in $\mathcal{R}$ to the subset $\mathbb{Y}$. Thus, each projected range is the intersection $\mathcal{S}\cap\mathbb{Y}$, and the collection of all such intersections forms $\mathcal{R}_{\mathbb{Y}}$.
+
+### Example
+
+Let us understand all this using a small emperical example.
+Let us say my universe is $\mathbb{X} = \{1,2,3,4\}$ and my ranges are $\mathcal{R} = \{\{1,2\}, \{2,3\},\{1,2,3\}, \{1,3,4\}\}$, where 
+$$
+\begin{align}
+\mathcal{S_1} &= \{1,2\} \\
+\mathcal{S_2} &= \{2,3\} \\
+\mathcal{S_3} &= \{1,2,3\} \\
+\mathcal{S_4} &= \{1,3,4\}
+\end{align}
+$$
+Each $\mathcal{S_i}$ is a subset of $\mathbb{X}$
+
+If I collect all those \mathcal{S_i} and store in a set, i.e.,
+$$
+\mathcal{R} = \{\mathcal{S_1}, \mathcal{S_2}, \mathcal{S_3}, \mathcal{S_4}\}
+$$
+it is called family of ranges or simply ranges ($\mathcal{R}$). The tuple $(\mathbb{X}, \mathcal{R})$ is called a set system.
+
+Now, choose a subset $\mathbb{Y} = \{1,2,3\} \subseteq \mathbb{X}$.
+Now interseting this $\mathbb{Y}$ with each $\mathcal{S_i}$, we get the following:
+$$
+\begin{align}
+\mathcal{S_1} \cap \mathbb{Y} &= \{1,2\} \\
+\mathcal{S_2} \cap \mathbb{Y} &= \{2,3\} \\
+\mathcal{S_3} \cap \mathbb{Y} &= \{1,2,3\} \\
+\mathcal{S_4} \cap \mathbb{Y} &= \{1,3\}
+\end{align}
+$$
+If we collect them and store in a set $\mathcal{R_\mathbb{Y}}$, we get
+$$
+\mathcal{R_\mathbb{Y}} = \{\{1,2\}, \{2,3\}, \{1,2,3\}, \{1,3\}\}
+$$
+and this is the $\mathbf{PROJECTION}$.
+
+### Shattering
+
+Now let us ignore $\mathbb{X}$ and look only at $\mathbb{Y}$ and see what all are the subsets of $\mathbb{Y}$?
+$$
+2^{\mathbb{Y}} = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}\}
+$$
+Let us now compare $2^{\mathbb{Y}}$ with $\mathcal{R_\mathbb{Y}}$ and see, how do they differ.
+
+$$
+\begin{align}
+\mathcal{R_\mathbb{Y}} &= \{\{1,2\}, \{2,3\}, \{1,2,3\}, \{1,3\}\}\\
+2^{\mathbb{Y}} &= \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}\}
+\end{align}
+$$
+We can see that $\mathcal{R_\mathbb{Y}} \subset 2^{\mathbb{Y}}$ and $\mathcal{R_\mathbb{Y}} \neq 2^{\mathbb{Y}}$. This means that the projection of $\mathcal{R}$ onto $\mathbb{Y}$ does not cover all possible subsets of $\mathbb{Y}$. In other words, the set system $(\mathbb{X}, \mathcal{R})$ does not **shatter** the subset $\mathbb{Y}$
+
+This brings us to the definition of $\mathbf{shattering}$. A set system $(\mathbb{X}, \mathcal{R})$ is said to **shatter** a subset $\mathbb{Y} \subseteq \mathbb{X}$ if the projection of $\mathcal{R}$ onto $\mathbb{Y}$ covers all possible subsets of $\mathbb{Y}$. 
+
+Formally, $(\mathbb{X}, \mathcal{R})$ shatters $\mathbb{Y}$ if $\mathcal{R_\mathbb{Y}} = 2^{\mathbb{Y}}.$
