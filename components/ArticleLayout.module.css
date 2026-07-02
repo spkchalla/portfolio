@@ -100,11 +100,17 @@
 /* Sidebar */
 .sidebar {
     display: block;
+    align-self: stretch;
+    min-width: 0;
 }
 
 .stickyBox {
     position: sticky;
     top: calc(var(--navbar-height) + var(--space-6));
+    max-height: calc(100vh - var(--navbar-height) - (2 * var(--space-6)));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
 }
 
 /* ToC */

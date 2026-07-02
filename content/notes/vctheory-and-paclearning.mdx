@@ -232,11 +232,15 @@ where, $\mathcal{R} \subseteq 2^{\mathbb{X}}$. $\mathcal{R}$ is the collection o
 
 ### Projection
 
+<Note title="Definition: Projection">
+
 Given that $\mathbb{Y} \subseteq \mathbb{X}$, projection $(\mathbb{Y}, \mathcal{R_{\mathbb{Y}}})$ is defined as the following:
 $$
 \mathcal{R_{\mathbb{Y}}} = \{\mathcal{S} \cap \mathbb{Y} | \mathcal{S}\in \mathcal{R}\}
 $$
 given that $\mathcal{R_{\mathbb{Y}}} \subseteq 2^{\mathbb{Y}}$.
+
+</Note>
 
 <Image
   src="/images/notes/projection-set-system.png"
@@ -299,6 +303,10 @@ $$
 $$
 We can see that $\mathcal{R_\mathbb{Y}} \subset 2^{\mathbb{Y}}$ and $\mathcal{R_\mathbb{Y}} \neq 2^{\mathbb{Y}}$. This means that the projection of $\mathcal{R}$ onto $\mathbb{Y}$ does not cover all possible subsets of $\mathbb{Y}$. In other words, the set system $(\mathbb{X}, \mathcal{R})$ does not **shatter** the subset $\mathbb{Y}$
 
-This brings us to the definition of $\mathbf{shattering}$. A set system $(\mathbb{X}, \mathcal{R})$ is said to **shatter** a subset $\mathbb{Y} \subseteq \mathbb{X}$ if the projection of $\mathcal{R}$ onto $\mathbb{Y}$ covers all possible subsets of $\mathbb{Y}$. 
+<Note title="Definition: Shattering">
+
+A set system $(\mathbb{X}, \mathcal{R})$ is said to **shatter** a subset $\mathbb{Y} \subseteq \mathbb{X}$ if the projection of $\mathcal{R}$ onto $\mathbb{Y}$ covers all possible subsets of $\mathbb{Y}$.
 
 Formally, $(\mathbb{X}, \mathcal{R})$ shatters $\mathbb{Y}$ if $\mathcal{R_\mathbb{Y}} = 2^{\mathbb{Y}}.$
+
+</Note>
