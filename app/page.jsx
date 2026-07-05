@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getAllArticles, getAllProjects, getAllSideQuests } from '../lib/mdx-loader';
 import { buildContentIndex } from '../lib/content-index';
+import Divider from '../components/Divider';
 import Search from '../components/Search';
 import MouseTracker from '../components/MouseTracker';
 import GeometricHero from '../components/GeometricHero';
@@ -76,7 +77,7 @@ export default function HomePage() {
             </section>
 
             <div className={`container ${styles.dividerWrap}`}>
-                <hr className="divider" />
+                <Divider />
             </div>
 
             {/* Recent Articles */}
@@ -115,7 +116,7 @@ export default function HomePage() {
             </section>
 
             <div className="container">
-                <hr className="divider" />
+                <Divider />
             </div>
 
             <section className={`container ${styles.section}`}>
@@ -151,7 +152,7 @@ export default function HomePage() {
             </section>
 
             <div className="container">
-                <hr className="divider" />
+                <Divider />
             </div>
 
             {/* Side Quests */}

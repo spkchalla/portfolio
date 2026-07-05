@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './page.module.css';
 
 export const metadata = {
@@ -15,10 +16,27 @@ const interests = [
 
 export default function AboutPage() {
     return (
-        <div className="container container--narrow">
+        <div style={{ width: '100%' }}>
+            <div className={styles.heroBanner}>
+                {/* 
+                  Please rename your uploaded image to 'about-hero.png' 
+                  and place it in the 'public/images/' folder!
+                */}
+                <Image 
+                    src="/images/about-hero.png" 
+                    alt="Curious. Persistent. Purposeful."
+                    width={1920}
+                    height={1080}
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                    priority
+                    quality={100}
+                />
+            </div>
+            
+            <div className="container container--narrow">
             <div className={styles.page}>
                 <header className={`animate-fade-in-up ${styles.header}`}>
-                    <h1 className={styles.title}>About</h1>
+                    <h1 className={styles.title}>About Me</h1>
                 </header>
 
                 <div className={`animate-fade-in-up delay-1 prose ${styles.bio}`}>
@@ -66,6 +84,7 @@ export default function AboutPage() {
                         . For anything else, reach out via GitHub issues or discussions on any of my repositories.
                     </p>
                 </section>
+            </div>
             </div>
         </div>
     );

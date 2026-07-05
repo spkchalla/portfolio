@@ -52,3 +52,14 @@
     background: var(--color-accent);
     flex-shrink: 0;
 }
+
+/* Hero Banner Styles */
+.heroBanner {
+    position: relative;
+    width: 100%;
+    margin-bottom: var(--space-6);
+    background: var(--color-bg);
+    /* Use exact pixel values to avoid touching the text/quote */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 60px, black calc(100% - 80px), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0px, black 60px, black calc(100% - 80px), transparent 100%);
+}

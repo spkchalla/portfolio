@@ -58,7 +58,7 @@ const themeScript = `
 export default function RootLayout({ children }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <head>
+        <head>
                 {/* Google Tag (gtag.js) */}
                 <Script
                     async
