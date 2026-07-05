@@ -81,7 +81,33 @@ export default function AboutPage() {
                         >
                             GitHub
                         </a>
-                        . For anything else, reach out via GitHub issues or discussions on any of my repositories.
+                        . I am always open to discussing systems engineering, research, and new collaborations. You can reach me at:{' '}
+                        <span style={{ display: 'inline-block', marginTop: 'var(--space-2)' }}>
+                            {(() => {
+                                const email = process.env.NEXT_PUBLIC_EMAIL || '';
+                                if (!email) return '';
+                                const [user, domain] = email.split('@');
+                                
+                                // Map English chars to visually similar Cyrillic, Greek, Armenian, and alternate Latin chars
+                                const homoglyphs = {
+                                    'a': 'а', 'c': 'с', 'e': 'е', 'o': 'о', 'p': 'р', 'x': 'х', 'y': 'у', 
+                                    'i': 'і', 'j': 'ј', 's': 'ѕ', 'd': 'ԁ', 'h': 'һ', 'l': 'ӏ', 'w': 'ԝ',
+                                    'v': 'ν', 'u': 'υ', 'k': 'κ', 'g': 'ɡ', 'n': 'ո', 'm': 'м', 't': 'т'
+                                };
+                                
+                                const obfuscatedUser = user.split('').map(c => homoglyphs[c.toLowerCase()] || c).join('');
+                                const safeDomain = domain ? domain.replace(/\./g, ' ]dot[ ') : '';
+                                
+                                return (
+                                    <>
+                                        <strong>{obfuscatedUser} ]at[ {safeDomain}</strong>
+                                        <span style={{ display: 'block', fontSize: 'var(--text-sm)', color: 'var(--color-accent)', marginTop: '4px', fontStyle: 'italic' }}>
+                                            (Please type the address manually; copying may preserve lookalike characters.)
+                                        </span>
+                                    </>
+                                );
+                            })()}
+                        </span>
                     </p>
                 </section>
             </div>
