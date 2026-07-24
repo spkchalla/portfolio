@@ -30,10 +30,10 @@
 }
 
 .title {
-    font-size: clamp(var(--text-3xl), 8vw, var(--text-5xl));
-    font-weight: var(--weight-bold);
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+    font-size: var(--text-xl);
+    font-weight: var(--weight-semibold);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
     color: var(--color-text);
 }
 
@@ -91,7 +91,7 @@
 
 .summary {
     margin-top: var(--space-6);
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     color: var(--color-text-muted);
     line-height: var(--leading-body);
     font-weight: var(--weight-normal);

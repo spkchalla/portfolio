@@ -1,0 +1,95 @@
+---
+title: "Calculating Areas and Volumes using MCMC"
+date: "2026-07-23"
+tags: ["Mathematics", "MCMC", "Monte Carlo Methods"]
+summary: "A method for calculating areas and volumes using Markov Chain Monte Carlo techniques."
+---
+
+## Calculating Volumes in higher dimensions.
+
+In lower dimensions, we generally have a closed form for finding areas and volumes of known shapes and objects. However, when we don't know the shape or object, we enclose it under a known shape and discretize the known shape into a grid of points. We then say that the ratio of points that fall inside the unknown shape to the total number of points in the known shape is equal to the ratio of the volume of the unknown shape to the volume of the known shape. i.e.,
+$$
+\frac{\text{Points inside unknown shape}}{\text{Total points in known shape}} = \frac{\text{Volume of unknown shape}}{\text{Volume of known shape}}
+$$
+This makes the formula for the volume of the unknown shape as follows:
+$$
+\text{Volume of unknown shape} = \frac{\text{Points inside unknown shape}}{\text{Total points in known shape}} \times \text{Volume of known shape}
+$$
+
+This works when we are in lower dimensions, but when we are in higher dimensions, the mere idea of getting into the unknown shape which is enclosed in a known shape is not easy. We may say, "Let us throw darts into it and see how many darts fall inside the unknown shape." But this is not a good idea because the volume of the known shape increases exponentially with the number of dimensions. This makes us to throw many septillions of darts just to make a single dart fall into the unknown shape. So, we need to use a better method to get into the unknown shape. This is where Markov Chain Monte Carlo (MCMC) comes into play.
+
+## A small change to the dart throwing method
+
+Instead of enclosing the whole unknown shape in a known shape(sphere in d-dimensions), we can do this thing iteratively by increasing the sphere gradually. Initially, we start with the sphere of radius 1 and then we increase the radius gradually. We can say that the unknown shape is enclosed in a sphere of radius $r$. Now, we throw the darts into the increasing spheres to calculate the volume of the unknown shape. This forms a telescopic series of ratios of volumes, which finally lets us have the volume of the unknown shape(a convex set $R$). The ratio of volumes can be calculated as follows:
+$$
+\text{Vol}(R) = \text{Vol}(S_k \cap R) = \frac{\text{Vol}(S_k \cap R)}{\text{Vol}(S_{k-1} \cap R)} \frac{\text{Vol}(S_{k-1} \cap R)}{\text{Vol}(S_{k-2} \cap R)} \dots \frac{\text{Vol}(S_2 \cap R)}{\text{Vol}(S_1 \cap R)} \text{Vol}(S_1)
+$$
+where $S_k$ is the sphere of radius $r_k$ and $S_{k-1}$ is the sphere of radius $r_{k-1}$ and so on.
+
+### Increment of the radius
+
+The most important question is how much should we increase the radius of the sphere compared with the previous radius. This holds a lot of significance because, if we increase it by say 2 units, then the volume of the sphere increases exponentially because, if there are 100 dimensions, it becomes $2^{100}$ times the previous volume and the next one shall receive very small no. of points than the previous one.
+
+Hence, we need to fix the maximum factor one can increase. Then comes euler's constant.
+
+let us say the factor is $k$ at which the next sphere's radius is increased. Then, the volume of the next sphere is $k^d$ times the previous volume. We can say that the maximum factor $k$ should be such that $k^d < e$, where $e$ is euler's constant. Hence, we can say that $k < e^{1/d}$.
+
+Using taylor series expansion, we can say that $e^{1/d} = 1 + \frac{1}{d} + \frac{1}{2!d^2} + \frac{1}{3!d^3} + \dots$. Hence, we can say that the maximum factor $k$ should be $1 + \frac{1}{d}$.
+
+So, we say we need to increment the radius of the sphere by a factor of $1 + \frac{1}{d}$, where $d$ is the number of dimensions. This ensures that the volume of the next sphere does not increase too rapidly, allowing for a more efficient sampling of points within the unknown shape.
+
+$$
+1\le \frac{Vol(S_{i}\cap R)}{Vol(S_{i-1} \cap R)} \le e
+$$
+
+
+How many spheres do we need to enclose the unknown shape?
+
+If the unknown shape is enclosed in a sphere of radius $r$, then we can say that the number of spheres needed to enclose the unknown shape is $\log_{1 + \frac{1}{d}} r$. This is because we are increasing the radius of the sphere by a factor of $1 + \frac{1}{d}$ each time, and we need to reach a radius of $r$ starting from a radius of 1. Thus we receive an order of $O(d \ln r)$. The book uses even higher upper bound to be $O(dr)$ which is definitely larger than $O(d \ln r)$.
+
+## What about the error?
+
+There ought to be an error in the calculation of the volume at each iteration. But, I would like to have my error at most $\epsilon$ at the end of the calculation. Then what is the error I can allow at each iteration? Let us derieve it.
+Let us say we have $k$ iterations and each iteration has an error of $\delta$. Then, the total error at the end of the calculation is given by:
+$$
+\text{Combined Error} \approx (1 + \delta)^k 
+$$
+For a very small error $\delta$, we can use the first order taylor approximation (or binomial approximation) to say that $(1 + \delta)^k \approx 1 + k\delta$. Hence, we can say that the total error at the end of the calculation is given by:
+$$
+\begin{align*}
+(1 + \delta)^k &\approx 1 + k\delta \\
+k\delta &\le \epsilon \\
+\delta &\le \frac{\epsilon}{k}
+\end{align*}
+$$
+
+Hence this shows us that we need to have an error of at most $\frac{\epsilon}{k}$ at each iteration to ensure that the total error at the end of the calculation does not exceed $\epsilon$. This is crucial for maintaining accuracy in our volume estimation using MCMC methods.
+
+But, we still didn't tell exactly, how much of an error we can allow at each iteration. We just know the maximum allowable error.
+
+If $r$ is the radius of the final sphere, then 
+$$
+\left (1 + \frac{1}{d} \right)^k = r
+$$
+Taking natural logarithm on both sides, we get:
+$$
+k \ln \left (1 + \frac{1}{d} \right) = \ln r \implies k = \frac{\ln r}{\ln \left (1 + \frac{1}{d} \right)}
+$$
+Using the standard logarithmic approximation $\ln(1 + x) \approx x$ for small $x$, we can further simplify this to:
+$$
+\ln \left (1 + \frac{1}{d} \right) \approx \frac{1}{d}
+$$
+More rigorously, because $\ln\left(1 + \frac{1}{d}\right) \geq \frac{1}{d+1}$ for all $d > 0$, we can say that:
+$$
+k \leq (d+1) \ln r
+$$
+For aesthetic purposes and to be parameter free, we can replace (d+1) with a safe upper bound of 
+ed. (since $d+1 < e\cdot d$ for all dimensions $d \geq 1$). Hence, we can say that:
+$$
+k \leq e \cdot d \ln r
+$$
+By putting all of these together, we can say that the error at each iteration should be at most:
+$$
+\delta \leq \frac{\epsilon}{ed \ln r}
+$$
+Hence by having an error of at most $\frac{\epsilon}{ed \ln r}$ at each iteration, we can ensure that the total error at the end of the calculation does not exceed $(1 + \epsilon)$.
